@@ -3,8 +3,6 @@ import { Resend } from "resend";
 
 export const runtime = "nodejs";
 
-/* ---------- Types ---------- */
-
 interface ContactFormData {
   name: string;
   email: string;
@@ -15,49 +13,78 @@ interface ContactFormData {
   captchaToken: string;
 }
 
-/* ---------- Helpers ---------- */
-
-// ✅ Type-safe env resolver (THIS fixes the build issue)
-function requireEnv(name: string): string {
-  const value = process.env[name];
-  if (!value) {
-    throw new Error(`Missing required environment variable: ${name}`);
+// Verify reCAPTCHA token
+async function verifyCaptcha(token: string): Promise<boolean> {
+  if (!process.env.RECAPTCHA_SECRET_KEY) {
+    throw new Error("RECAPTCHA_SECRET_KEY is not configured");
   }
-  return value;
+
+  try {
+    const response = await fetch(
+      `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}`,
+      { method: "POST" }
+    );
+    const data = await response.json();
+    return data.success === true;
+  } catch (error) {
+    console.error("reCAPTCHA verification error:", error);
+    return false;
+  }
 }
 
-// Generate HTML email template
+// Generate HTML email template (UNCHANGED)
 function generateEmailHTML(data: ContactFormData): string {
   return `
     <!DOCTYPE html>
     <html>
     <head>
-      <meta charset="utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>New Contact Form Submission</title>
     </head>
-    <body style="font-family: Arial, sans-serif; color:#333; max-width:600px; margin:auto;">
-      <h2>📬 New Contact Form Submission</h2>
-      <p><strong>Name:</strong> ${data.name}</p>
-      <p><strong>Email:</strong> ${data.email}</p>
-      <p><strong>Phone:</strong> ${data.phone}</p>
-      ${data.company ? `<p><strong>Company:</strong> ${data.company}</p>` : ""}
-      <p><strong>Subject:</strong> ${data.subject}</p>
-      <p><strong>Message:</strong></p>
-      <pre>${data.message}</pre>
+    <body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
+      <div style="background: linear-gradient(135deg, #8b5cf6, #6366f1); color: white; padding: 30px; border-radius: 10px 10px 0 0; text-align: center;">
+        <h1 style="margin: 0; font-size: 24px;">📬 New Contact Form Submission</h1>
+        <p style="margin: 10px 0 0 0; opacity: 0.9;">from Muenot Website</p>
+      </div>
+      <div style="background: #f9fafb; padding: 30px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 10px 10px;">
+        <div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #e5e7eb;">
+          <div style="font-weight: 600; color: #6366f1; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px;">Full Name</div>
+          <div style="color: #1f2937; font-size: 16px;">${data.name}</div>
+        </div>
+        <div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #e5e7eb;">
+          <div style="font-weight: 600; color: #6366f1; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px;">Email Address</div>
+          <div style="color: #1f2937; font-size: 16px;"><a href="mailto:${data.email}" style="color: #6366f1;">${data.email}</a></div>
+        </div>
+        <div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #e5e7eb;">
+          <div style="font-weight: 600; color: #6366f1; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px;">Phone Number</div>
+          <div style="color: #1f2937; font-size: 16px;"><a href="tel:${data.phone}" style="color: #6366f1;">${data.phone}</a></div>
+        </div>
+        ${data.company ? `
+        <div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #e5e7eb;">
+          <div style="font-weight: 600; color: #6366f1; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px;">Company</div>
+          <div style="color: #1f2937; font-size: 16px;">${data.company}</div>
+        </div>
+        ` : ''}
+        <div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #e5e7eb;">
+          <div style="font-weight: 600; color: #6366f1; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px;">Subject</div>
+          <div style="color: #1f2937; font-size: 16px;">${data.subject}</div>
+        </div>
+        <div>
+          <div style="font-weight: 600; color: #6366f1; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px;">Message</div>
+          <div style="background: white; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb; white-space: pre-wrap; color: #1f2937;">${data.message}</div>
+        </div>
+      </div>
     </body>
     </html>
   `;
 }
-
-/* ---------- API Route ---------- */
 
 export async function POST(request: NextRequest) {
   try {
     const body: ContactFormData = await request.json();
     const { name, email, phone, subject, message, captchaToken } = body;
 
-    // Basic validation
     if (!name || !email || !phone || !subject || !message || !captchaToken) {
       return NextResponse.json(
         { error: "All required fields must be filled" },
@@ -69,6 +96,14 @@ export async function POST(request: NextRequest) {
     if (!emailRegex.test(email)) {
       return NextResponse.json(
         { error: "Invalid email format" },
+        { status: 400 }
+      );
+    }
+
+    const captchaValid = await verifyCaptcha(captchaToken);
+    if (!captchaValid) {
+      return NextResponse.json(
+        { error: "Captcha verification failed" },
         { status: 400 }
       );
     }
