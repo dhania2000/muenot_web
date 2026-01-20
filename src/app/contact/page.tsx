@@ -177,6 +177,7 @@ export default function ContactPage() {
     setSubmitStatus("idle");
 
     try {
+      console.log("Muenot Submitting contact form...");
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
@@ -208,8 +209,10 @@ export default function ContactPage() {
           setErrors({ captcha: data.error });
         }
       }
-    } catch {
+    } catch (error) {
+      console.error("[Muenot Form submission exception:", error);
       setSubmitStatus("error");
+      setSubmitError("Network error: Unable to submit form");
     } finally {
       setIsSubmitting(false);
     }
