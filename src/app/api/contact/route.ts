@@ -19,15 +19,34 @@ async function verifyCaptcha(token: string): Promise<boolean> {
     throw new Error("RECAPTCHA_SECRET_KEY is not configured");
   }
 
-  try {
+ try {
+    // Use URLSearchParams for proper URL encoding
+    const params = new URLSearchParams({
+      secret: process.env.RECAPTCHA_SECRET_KEY,
+      response: token,
+    });
+
     const response = await fetch(
-      `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}`,
-      { method: "POST" }
+      "https://www.google.com/recaptcha/api/siteverify",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: params.toString(),
+      }
     );
+
+    if (!response.ok) {
+      console.error("Muenoy reCAPTCHA API response not OK:", response.status);
+      return false;
+    }
+
     const data = await response.json();
+    console.log("Muenot reCAPTCHA verification result:", data);
     return data.success === true;
   } catch (error) {
-    console.error("reCAPTCHA verification error:", error);
+    console.error("Muenoy reCAPTCHA verification error:", error);
     return false;
   }
 }
