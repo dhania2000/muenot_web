@@ -83,26 +83,22 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const captchaValid = await verifyCaptcha(captchaToken);
-    if (!captchaValid) {
-      return NextResponse.json(
-        { error: "Captcha verification failed" },
-        { status: 400 }
-      );
-    }
+  
 
-    if (
-      !process.env.RESEND_API_KEY ||
-      !process.env.RESEND_FROM_EMAIL ||
-      !process.env.CONTACT_EMAIL
-    ) {
+   // Check environment variables
+    const missingVars = [];
+    if (!process.env.RESEND_API_KEY) missingVars.push("RESEND_API_KEY");
+    if (!process.env.RESEND_FROM_EMAIL) missingVars.push("RESEND_FROM_EMAIL");
+    if (!process.env.CONTACT_EMAIL) missingVars.push("CONTACT_EMAIL");
+    
+    if (missingVars.length > 0) {
+      console.error("Missing environment variables:", missingVars.join(", "));
       return NextResponse.json(
-        { error: "Email service is not configured" },
+        { error: `Server configuration error: Missing ${missingVars.join(", ")}` },
         { status: 500 }
       );
     }
 
-    // ✅ Resend initialized ONLY at runtime (FIX)
     const resend = new Resend(process.env.RESEND_API_KEY);
 
     const { error } = await resend.emails.send({
@@ -127,8 +123,9 @@ export async function POST(request: NextRequest) {
     );
   } catch (error) {
     console.error("Contact form error:", error);
+    const errorMessage = error instanceof Error ? error.message : "Internal server error";
     return NextResponse.json(
-      { error: "Internal server error" },
+      { error: errorMessage },
       { status: 500 }
     );
   }
