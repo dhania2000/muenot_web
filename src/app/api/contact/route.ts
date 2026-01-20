@@ -3,6 +3,8 @@ import { Resend } from "resend";
 
 export const runtime = "nodejs";
 
+/* ---------- Types ---------- */
+
 interface ContactFormData {
   name: string;
   email: string;
@@ -13,54 +15,49 @@ interface ContactFormData {
   captchaToken: string;
 }
 
-// Generate HTML email template (UNCHANGED)
+/* ---------- Helpers ---------- */
+
+// ✅ Type-safe env resolver (THIS fixes the build issue)
+function requireEnv(name: string): string {
+  const value = process.env[name];
+  if (!value) {
+    throw new Error(`Missing required environment variable: ${name}`);
+  }
+  return value;
+}
+
+// Generate HTML email template
 function generateEmailHTML(data: ContactFormData): string {
   return `
     <!DOCTYPE html>
     <html>
     <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>New Contact Form Submission</title>
     </head>
-    <body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
-      <div style="background: linear-gradient(135deg, #8b5cf6, #6366f1); color: white; padding: 30px; border-radius: 10px 10px 0 0; text-align: center;">
-        <h1 style="margin: 0; font-size: 24px;">📬 New Contact Form Submission</h1>
-        <p style="margin: 10px 0 0 0; opacity: 0.9;">from Muenot Website</p>
-      </div>
-      <div style="background: #f9fafb; padding: 30px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 10px 10px;">
-        <div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #e5e7eb;">
-          <div style="font-weight: 600; color: #6366f1; font-size: 12px; text-transform: uppercase;">Full Name</div>
-          <div>${data.name}</div>
-        </div>
-        <div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #e5e7eb;">
-          <div style="font-weight: 600; color: #6366f1; font-size: 12px; text-transform: uppercase;">Email</div>
-          <div><a href="mailto:${data.email}">${data.email}</a></div>
-        </div>
-        <div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #e5e7eb;">
-          <div style="font-weight: 600; color: #6366f1; font-size: 12px; text-transform: uppercase;">Phone</div>
-          <div>${data.phone}</div>
-        </div>
-        ${data.company ? `
-        <div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #e5e7eb;">
-          <div style="font-weight: 600; color: #6366f1; font-size: 12px; text-transform: uppercase;">Company</div>
-          <div>${data.company}</div>
-        </div>` : ""}
-        <div style="margin-bottom: 20px;">
-          <div style="font-weight: 600; color: #6366f1; font-size: 12px; text-transform: uppercase;">Message</div>
-          <div style="white-space: pre-wrap;">${data.message}</div>
-        </div>
-      </div>
+    <body style="font-family: Arial, sans-serif; color:#333; max-width:600px; margin:auto;">
+      <h2>📬 New Contact Form Submission</h2>
+      <p><strong>Name:</strong> ${data.name}</p>
+      <p><strong>Email:</strong> ${data.email}</p>
+      <p><strong>Phone:</strong> ${data.phone}</p>
+      ${data.company ? `<p><strong>Company:</strong> ${data.company}</p>` : ""}
+      <p><strong>Subject:</strong> ${data.subject}</p>
+      <p><strong>Message:</strong></p>
+      <pre>${data.message}</pre>
     </body>
     </html>
   `;
 }
+
+/* ---------- API Route ---------- */
 
 export async function POST(request: NextRequest) {
   try {
     const body: ContactFormData = await request.json();
     const { name, email, phone, subject, message, captchaToken } = body;
 
+    // Basic validation
     if (!name || !email || !phone || !subject || !message || !captchaToken) {
       return NextResponse.json(
         { error: "All required fields must be filled" },
@@ -76,27 +73,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // 🔐 ENV VALIDATION (Type-safe)
-    const {
-      RESEND_API_KEY,
-      RESEND_FROM_EMAIL,
-      CONTACT_EMAIL,
-    } = process.env;
+    // 🔐 ENV VARIABLES (TypeScript guaranteed strings)
+    const RESEND_API_KEY = requireEnv("RESEND_API_KEY");
+    const RESEND_FROM_EMAIL = requireEnv("RESEND_FROM_EMAIL");
+    const CONTACT_EMAIL = requireEnv("CONTACT_EMAIL");
 
-    const missingVars = [];
-    if (!RESEND_API_KEY) missingVars.push("RESEND_API_KEY");
-    if (!RESEND_FROM_EMAIL) missingVars.push("RESEND_FROM_EMAIL");
-    if (!CONTACT_EMAIL) missingVars.push("CONTACT_EMAIL");
-
-    if (missingVars.length > 0) {
-      console.error("Missing environment variables:", missingVars.join(", "));
-      return NextResponse.json(
-        { error: `Server misconfiguration: ${missingVars.join(", ")}` },
-        { status: 500 }
-      );
-    }
-
-    // ✅ From here on, TS knows these are strings
     const resend = new Resend(RESEND_API_KEY);
 
     const { error } = await resend.emails.send({
@@ -120,11 +101,10 @@ export async function POST(request: NextRequest) {
       { status: 200 }
     );
   } catch (error) {
-    console.error("Contact form error:", error);
+    console.error("Contact API error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }
     );
   }
 }
-
