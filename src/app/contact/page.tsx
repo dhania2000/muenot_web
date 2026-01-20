@@ -6,7 +6,7 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { SparklesCore } from "@/components/ui/sparkles";
 import { Spotlight } from "@/components/ui/spotlight";
-
+import ReCAPTCHA from "react-google-recaptcha";
 import {
   Mail,
   Phone,
@@ -50,6 +50,8 @@ export default function ContactPage() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -101,6 +103,10 @@ export default function ContactPage() {
       newErrors.message = "Message cannot exceed 1000 characters";
     }
 
+    // Captcha validation
+    if (!captchaToken) {
+      newErrors.captcha = "Please verify you are not a robot";
+    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -153,7 +159,12 @@ export default function ContactPage() {
     }
   };
 
-
+  const handleCaptchaChange = (token: string | null) => {
+    setCaptchaToken(token);
+    if (token && errors.captcha) {
+      setErrors((prev) => ({ ...prev, captcha: undefined }));
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -171,9 +182,10 @@ export default function ContactPage() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(
-          formData
-        ),
+        body: JSON.stringify({
+          ...formData,
+          captchaToken,
+        }),
       });
 
       const data = await response.json();
@@ -188,7 +200,8 @@ export default function ContactPage() {
           subject: "",
           message: "",
         });
-      
+        setCaptchaToken(null);
+        recaptchaRef.current?.reset();
       } else {
         setSubmitStatus("error");
         if (data.error) {
@@ -499,7 +512,22 @@ export default function ContactPage() {
                     )}
                   </div>
 
-              
+                  {/* reCAPTCHA */}
+                  <div>
+                    <ReCAPTCHA
+                      ref={recaptchaRef}
+                      sitekey={
+                        typeof window !== "undefined" && window.location.hostname === "localhost"
+                          ? "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" // Google's test key for localhost
+                          : process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!
+                      }
+                      onChange={handleCaptchaChange}
+                      theme="dark"
+                    />
+                    {errors.captcha && (
+                      <p className="mt-1 text-sm text-red-400">{errors.captcha}</p>
+                    )}
+                  </div>
 
                   {/* Submit Button */}
                   <button
