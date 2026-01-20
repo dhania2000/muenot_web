@@ -13,8 +13,6 @@ interface ContactFormData {
   captchaToken: string;
 }
 
-
-
 // Generate HTML email template (UNCHANGED)
 function generateEmailHTML(data: ContactFormData): string {
   return `
@@ -32,30 +30,25 @@ function generateEmailHTML(data: ContactFormData): string {
       </div>
       <div style="background: #f9fafb; padding: 30px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 10px 10px;">
         <div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #e5e7eb;">
-          <div style="font-weight: 600; color: #6366f1; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px;">Full Name</div>
-          <div style="color: #1f2937; font-size: 16px;">${data.name}</div>
+          <div style="font-weight: 600; color: #6366f1; font-size: 12px; text-transform: uppercase;">Full Name</div>
+          <div>${data.name}</div>
         </div>
         <div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #e5e7eb;">
-          <div style="font-weight: 600; color: #6366f1; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px;">Email Address</div>
-          <div style="color: #1f2937; font-size: 16px;"><a href="mailto:${data.email}" style="color: #6366f1;">${data.email}</a></div>
+          <div style="font-weight: 600; color: #6366f1; font-size: 12px; text-transform: uppercase;">Email</div>
+          <div><a href="mailto:${data.email}">${data.email}</a></div>
         </div>
         <div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #e5e7eb;">
-          <div style="font-weight: 600; color: #6366f1; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px;">Phone Number</div>
-          <div style="color: #1f2937; font-size: 16px;"><a href="tel:${data.phone}" style="color: #6366f1;">${data.phone}</a></div>
+          <div style="font-weight: 600; color: #6366f1; font-size: 12px; text-transform: uppercase;">Phone</div>
+          <div>${data.phone}</div>
         </div>
         ${data.company ? `
         <div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #e5e7eb;">
-          <div style="font-weight: 600; color: #6366f1; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px;">Company</div>
-          <div style="color: #1f2937; font-size: 16px;">${data.company}</div>
-        </div>
-        ` : ''}
-        <div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #e5e7eb;">
-          <div style="font-weight: 600; color: #6366f1; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px;">Subject</div>
-          <div style="color: #1f2937; font-size: 16px;">${data.subject}</div>
-        </div>
-        <div>
-          <div style="font-weight: 600; color: #6366f1; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px;">Message</div>
-          <div style="background: white; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb; white-space: pre-wrap; color: #1f2937;">${data.message}</div>
+          <div style="font-weight: 600; color: #6366f1; font-size: 12px; text-transform: uppercase;">Company</div>
+          <div>${data.company}</div>
+        </div>` : ""}
+        <div style="margin-bottom: 20px;">
+          <div style="font-weight: 600; color: #6366f1; font-size: 12px; text-transform: uppercase;">Message</div>
+          <div style="white-space: pre-wrap;">${data.message}</div>
         </div>
       </div>
     </body>
@@ -83,27 +76,32 @@ export async function POST(request: NextRequest) {
       );
     }
 
-  
+    // 🔐 ENV VALIDATION (Type-safe)
+    const {
+      RESEND_API_KEY,
+      RESEND_FROM_EMAIL,
+      CONTACT_EMAIL,
+    } = process.env;
 
-   // Check environment variables
     const missingVars = [];
-    if (!process.env.RESEND_API_KEY) missingVars.push("RESEND_API_KEY");
-    if (!process.env.RESEND_FROM_EMAIL) missingVars.push("RESEND_FROM_EMAIL");
-    if (!process.env.CONTACT_EMAIL) missingVars.push("CONTACT_EMAIL");
-    
+    if (!RESEND_API_KEY) missingVars.push("RESEND_API_KEY");
+    if (!RESEND_FROM_EMAIL) missingVars.push("RESEND_FROM_EMAIL");
+    if (!CONTACT_EMAIL) missingVars.push("CONTACT_EMAIL");
+
     if (missingVars.length > 0) {
       console.error("Missing environment variables:", missingVars.join(", "));
       return NextResponse.json(
-        { error: `Server configuration error: Missing ${missingVars.join(", ")}` },
+        { error: `Server misconfiguration: ${missingVars.join(", ")}` },
         { status: 500 }
       );
     }
 
-    const resend = new Resend(process.env.RESEND_API_KEY);
+    // ✅ From here on, TS knows these are strings
+    const resend = new Resend(RESEND_API_KEY);
 
     const { error } = await resend.emails.send({
-      from: process.env.RESEND_FROM_EMAIL,
-      to: [process.env.CONTACT_EMAIL],
+      from: RESEND_FROM_EMAIL,
+      to: [CONTACT_EMAIL],
       replyTo: email,
       subject: `${subject} - from ${name}`,
       html: generateEmailHTML(body),
@@ -123,12 +121,10 @@ export async function POST(request: NextRequest) {
     );
   } catch (error) {
     console.error("Contact form error:", error);
-    const errorMessage = error instanceof Error ? error.message : "Internal server error";
     return NextResponse.json(
-      { error: errorMessage },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
 }
-
 
