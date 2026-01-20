@@ -13,43 +13,7 @@ interface ContactFormData {
   captchaToken: string;
 }
 
-// Verify reCAPTCHA token
-async function verifyCaptcha(token: string): Promise<boolean> {
-  if (!process.env.RECAPTCHA_SECRET_KEY) {
-    throw new Error("RECAPTCHA_SECRET_KEY is not configured");
-  }
 
- try {
-    // Use URLSearchParams for proper URL encoding
-    const params = new URLSearchParams({
-      secret: process.env.RECAPTCHA_SECRET_KEY,
-      response: token,
-    });
-
-    const response = await fetch(
-      "https://www.google.com/recaptcha/api/siteverify",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: params.toString(),
-      }
-    );
-
-    if (!response.ok) {
-      console.error("Muenoy reCAPTCHA API response not OK:", response.status);
-      return false;
-    }
-
-    const data = await response.json();
-    console.log("Muenot reCAPTCHA verification result:", data);
-    return data.success === true;
-  } catch (error) {
-    console.error("Muenoy reCAPTCHA verification error:", error);
-    return false;
-  }
-}
 
 // Generate HTML email template (UNCHANGED)
 function generateEmailHTML(data: ContactFormData): string {
