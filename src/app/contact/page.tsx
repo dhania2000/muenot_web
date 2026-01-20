@@ -177,7 +177,6 @@ export default function ContactPage() {
     setSubmitStatus("idle");
 
     try {
-      console.log("Muenot Submitting contact form...");
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
@@ -209,10 +208,8 @@ export default function ContactPage() {
           setErrors({ captcha: data.error });
         }
       }
-    } catch (error) {
-      console.error("[Muenot Form submission exception:", error);
+    } catch {
       setSubmitStatus("error");
-      setSubmitError("Network error: Unable to submit form");
     } finally {
       setIsSubmitting(false);
     }
@@ -222,8 +219,8 @@ export default function ContactPage() {
     {
       icon: Mail,
       title: "Email Us",
-      content: "info@muenot.com",
-      href: "mailto:info@muenot.com",
+      content: "info@muenot.co.in",
+      href: "mailto:info@muenot.co.in",
     },
     {
       icon: Phone,
