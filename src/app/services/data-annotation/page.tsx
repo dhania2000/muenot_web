@@ -128,67 +128,77 @@ export default function DataAnnotationPage() {
               viewport={{ once: true }}
               className="mb-24"
             >
-              <div className="grid md:grid-cols-2 gap-12 items-start">
-                <div>
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="p-3 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600">
-                      <ImageIcon className="w-8 h-8 text-white" />
-                    </div>
-                    <h3 className="text-3xl font-bold text-white">Image Labeling</h3>
+              {/* Title and Description - Full Width */}
+              <div className="mb-8">
+                <div className="flex items-center justify-center gap-4 mb-6">
+                  <div className="p-3 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600">
+                    <ImageIcon className="w-8 h-8 text-white" />
                   </div>
-                  <p className="text-muted-foreground text-lg mb-6">
-                    Our image labeling services provide precise and scalable annotation solutions for training robust computer vision AI models. We specialize in various annotation techniques including bounding boxes for object localization, polygon annotations for irregular shapes, semantic segmentation for pixel-level classification, and keypoint annotations for pose estimation.
-                  </p>
-                  <p className="text-muted-foreground text-lg">
-                    Our expert annotators ensure high-quality, consistent labels across large datasets, supporting applications from autonomous vehicles to medical imaging, retail analytics to agricultural monitoring.
+                  <h3 className="text-3xl font-bold text-white">Image Labeling</h3>
+                </div>
+                <p className="text-muted-foreground text-lg mb-4">
+                  Our image labeling services provide precise and scalable annotation solutions for training robust computer vision AI models. We specialize in various annotation techniques including bounding boxes for object localization, polygon annotations for irregular shapes, semantic segmentation for pixel-level classification, and keypoint annotations for pose estimation.
+                </p>
+                <p className="text-muted-foreground text-lg">
+                  Our expert annotators ensure high-quality, consistent labels across large datasets, supporting applications from autonomous vehicles to medical imaging, retail analytics to agricultural monitoring.
+                </p>
+              </div>
+
+              {/* Capabilities in Columns */}
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-violet-400" />
+                    Bounding Box Annotation
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Rectangular boxes drawn around objects of interest for object localization and detection tasks. Ideal for training models like YOLO, Faster R-CNN, and SSD. We provide precise coordinates and class labels for single or multiple objects per image.
                   </p>
                 </div>
-                <div className="space-y-4">
-                  <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                    <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                      <CheckCircle className="w-5 h-5 text-violet-400" />
-                      Bounding Box Annotation
-                    </h4>
-                    <p className="text-muted-foreground">
-                      Rectangular boxes drawn around objects of interest for object localization and detection tasks. Ideal for training models like YOLO, Faster R-CNN, and SSD. We provide precise coordinates and class labels for single or multiple objects per image.
-                    </p>
-                  </div>
-                  <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                    <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                      <CheckCircle className="w-5 h-5 text-violet-400" />
-                      Polygon and Polyline Annotation
-                    </h4>
-                    <p className="text-muted-foreground">
-                      Precise outlining of irregular shapes and objects using multiple connected points. Perfect for segmenting complex objects like vehicles, buildings, or natural features where bounding boxes lack precision. Supports concave and convex shapes.
-                    </p>
-                  </div>
-                  <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                    <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                      <CheckCircle className="w-5 h-5 text-violet-400" />
-                      Semantic Segmentation
-                    </h4>
-                    <p className="text-muted-foreground">
-                      Pixel-level classification where each pixel is assigned to a specific class. Essential for applications requiring detailed scene understanding like autonomous driving and medical imaging. We handle multi-class scenarios with precise boundaries.
-                    </p>
-                  </div>
-                  <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                    <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                      <CheckCircle className="w-5 h-5 text-violet-400" />
-                      Keypoint Annotation
-                    </h4>
-                    <p className="text-muted-foreground">
-                      Marking specific points of interest on objects, commonly used for pose estimation, facial landmark detection, and skeletal tracking in human activity recognition. Supports custom keypoint schemas and relationships.
-                    </p>
-                  </div>
-                  <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                    <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                      <CheckCircle className="w-5 h-5 text-violet-400" />
-                      Multi-class and Hierarchical Labeling
-                    </h4>
-                    <p className="text-muted-foreground">
-                      Complex classification schemes supporting multiple classes and hierarchical taxonomies. Enables nuanced categorization for sophisticated AI applications with parent-child relationships and multi-label scenarios.
-                    </p>
-                  </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-violet-400" />
+                    Polygon and Polyline Annotation
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Precise outlining of irregular shapes and objects using multiple connected points. Perfect for segmenting complex objects like vehicles, buildings, or natural features where bounding boxes lack precision. Supports concave and convex shapes.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-violet-400" />
+                    Semantic Segmentation
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Pixel-level classification where each pixel is assigned to a specific class. Essential for applications requiring detailed scene understanding like autonomous driving and medical imaging. We handle multi-class scenarios with precise boundaries.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-violet-400" />
+                    Keypoint Annotation
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Marking specific points of interest on objects, commonly used for pose estimation, facial landmark detection, and skeletal tracking in human activity recognition. Supports custom keypoint schemas and relationships.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-violet-400" />
+                    Multi-class and Hierarchical Labeling
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Complex classification schemes supporting multiple classes and hierarchical taxonomies. Enables nuanced categorization for sophisticated AI applications with parent-child relationships and multi-label scenarios.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-violet-400" />
+                    3D Point Cloud Annotation
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Labeling 3D spatial data from LiDAR and depth sensors for autonomous vehicles, robotics, and AR/VR applications. Includes 3D bounding boxes, point classification, and object tracking in 3D space.
+                  </p>
                 </div>
               </div>
             </motion.div>
@@ -200,9 +210,25 @@ export default function DataAnnotationPage() {
               viewport={{ once: true }}
               className="mb-24"
             >
-              <div className="grid md:grid-cols-2 gap-12 items-start">
-                <div className="space-y-4 order-2 md:order-1">
-                  <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+              {/* Title and Description - Full Width */}
+              <div className="mb-8">
+                <div className="flex items-center justify-center gap-4 mb-6">
+                  <div className="p-3 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600">
+                    <Target className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-3xl font-bold text-white">Object Detection</h3>
+                </div>
+                <p className="text-muted-foreground text-lg mb-4">
+                  Our object detection annotation services enable AI models to accurately identify, classify, and locate multiple objects within images and videos. We provide comprehensive labeling for single and multi-object scenarios, instance segmentation for overlapping objects, and temporal tracking across video frames.
+                </p>
+                <p className="text-muted-foreground text-lg">
+                  Our quality assurance processes ensure consistent, accurate annotations that improve model performance across applications including security surveillance, retail analytics, manufacturing quality control, and autonomous systems.
+                </p>
+              </div>
+
+              {/* Capabilities in Columns */}
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
                     <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
                       <CheckCircle className="w-5 h-5 text-indigo-400" />
                       Single and Multi-Object Detection
@@ -238,28 +264,22 @@ export default function DataAnnotationPage() {
                       Assigning specific classes to detected objects along with additional attributes like color, size, orientation, and state. Enriches training data with contextual information for more sophisticated model capabilities.
                     </p>
                   </div>
-                  <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                    <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                      <CheckCircle className="w-5 h-5 text-indigo-400" />
-                      Quality Assurance and Validation
-                    </h4>
-                    <p className="text-muted-foreground">
-                      Multi-stage review process ensuring annotation accuracy, consistency, and adherence to project specifications. Includes automated checks, human verification, and statistical quality metrics with detailed reporting.
-                    </p>
-                  </div>
-                </div>
-                <div className="order-1 md:order-2">
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="p-3 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600">
-                      <Target className="w-8 h-8 text-white" />
-                    </div>
-                    <h3 className="text-3xl font-bold text-white">Object Detection</h3>
-                  </div>
-                  <p className="text-muted-foreground text-lg mb-6">
-                    Our object detection annotation services enable AI models to accurately identify, classify, and locate multiple objects within images and videos. We provide comprehensive labeling for single and multi-object scenarios, instance segmentation for overlapping objects, and temporal tracking across video frames.
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-indigo-400" />
+                    Quality Assurance and Validation
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Multi-stage review process ensuring annotation accuracy, consistency, and adherence to project specifications. Includes automated checks, human verification, and statistical quality metrics with detailed reporting.
                   </p>
-                  <p className="text-muted-foreground text-lg">
-                    Our quality assurance processes ensure consistent, accurate annotations that improve model performance across applications including security surveillance, retail analytics, manufacturing quality control, and autonomous systems.
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-indigo-400" />
+                    Occlusion and Partial Object Handling
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Specialized annotation for partially visible or occluded objects in challenging scenarios. Includes visibility flags, truncation indicators, and confidence scores for robust model training in real-world conditions.
                   </p>
                 </div>
               </div>
@@ -272,22 +292,24 @@ export default function DataAnnotationPage() {
               viewport={{ once: true }}
               className="mb-24"
             >
-              <div className="grid md:grid-cols-2 gap-12 items-start">
-                <div>
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="p-3 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600">
-                      <FileText className="w-8 h-8 text-white" />
-                    </div>
-                    <h3 className="text-3xl font-bold text-white">Text Tagging</h3>
+              {/* Title and Description - Full Width */}
+              <div className="mb-8">
+                <div className="flex items-center justify-center gap-4 mb-6">
+                  <div className="p-3 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600">
+                    <FileText className="w-8 h-8 text-white" />
                   </div>
-                  <p className="text-muted-foreground text-lg mb-6">
-                    Our text tagging services provide comprehensive annotation solutions for natural language processing and text understanding AI models. We offer part-of-speech tagging, named entity tagging, text categorization, sentiment analysis, and intent classification.
-                  </p>
-                  <p className="text-muted-foreground text-lg">
-                    Our linguist experts ensure accurate, context-aware annotations that capture the nuances of language across multiple domains and languages, supporting applications from chatbots and content moderation to document classification and information extraction.
-                  </p>
+                  <h3 className="text-3xl font-bold text-white">Text Tagging</h3>
                 </div>
-                <div className="space-y-4">
+                <p className="text-muted-foreground text-lg mb-4">
+                  Our text tagging services provide comprehensive annotation solutions for natural language processing and text understanding AI models. We offer part-of-speech tagging, named entity tagging, text categorization, sentiment analysis, and intent classification.
+                </p>
+                <p className="text-muted-foreground text-lg">
+                  Our linguist experts ensure accurate, context-aware annotations that capture the nuances of language across multiple domains and languages, supporting applications from chatbots and content moderation to document classification and information extraction.
+                </p>
+              </div>
+
+              {/* Capabilities in Columns */}
+              <div className="grid md:grid-cols-2 gap-6">
                   <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
                     <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
                       <CheckCircle className="w-5 h-5 text-purple-400" />
@@ -324,15 +346,23 @@ export default function DataAnnotationPage() {
                       Identifying and labeling emotional tone, polarity (positive/negative/neutral), and specific emotions expressed in text. Crucial for social media monitoring, customer feedback analysis, and brand sentiment tracking with granular emotion scales.
                     </p>
                   </div>
-                  <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                    <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                      <CheckCircle className="w-5 h-5 text-purple-400" />
-                      Intent and Context Labeling
-                    </h4>
-                    <p className="text-muted-foreground">
-                      Determining the underlying purpose or goal of a text utterance and capturing relevant contextual information. Essential for chatbots, virtual assistants, and conversational AI with support for multi-intent scenarios.
-                    </p>
-                  </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-purple-400" />
+                    Intent and Context Labeling
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Determining the underlying purpose or goal of a text utterance and capturing relevant contextual information. Essential for chatbots, virtual assistants, and conversational AI with support for multi-intent scenarios.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-purple-400" />
+                    Dependency Parsing and Syntax Trees
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Annotating grammatical relationships and sentence structure for advanced NLP tasks. Includes syntactic dependency trees, phrase structure analysis, and grammatical role labeling for deep language understanding.
+                  </p>
                 </div>
               </div>
             </motion.div>
@@ -344,8 +374,24 @@ export default function DataAnnotationPage() {
               viewport={{ once: true }}
               className="mb-24"
             >
-              <div className="grid md:grid-cols-2 gap-12 items-start">
-                <div className="space-y-4 order-2 md:order-1">
+              {/* Title and Description - Full Width */}
+              <div className="mb-8">
+                <div className="flex items-center justify-center gap-4 mb-6">
+                  <div className="p-3 rounded-xl bg-gradient-to-r from-fuchsia-600 to-purple-600">
+                    <Layers className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-3xl font-bold text-white">Entity Recognition</h3>
+                </div>
+                <p className="text-muted-foreground text-lg mb-4">
+                  Our entity recognition services enable sophisticated natural language understanding by identifying and classifying named entities within text data. We provide comprehensive annotation for standard entity types (persons, organizations, locations) as well as custom domain-specific entities.
+                </p>
+                <p className="text-muted-foreground text-lg">
+                  Our services include relationship extraction, co-reference resolution, and nested entity annotation for complex NLP applications including information retrieval, question answering, document understanding, and knowledge management systems.
+                </p>
+              </div>
+
+              {/* Capabilities in Columns */}
+              <div className="grid md:grid-cols-2 gap-6">
                   <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
                     <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
                       <CheckCircle className="w-5 h-5 text-fuchsia-400" />
@@ -382,28 +428,22 @@ export default function DataAnnotationPage() {
                       Linking pronouns and other referring expressions to their corresponding entities throughout a document. Improves document-level understanding and entity tracking for coherent information extraction.
                     </p>
                   </div>
-                  <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                    <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                      <CheckCircle className="w-5 h-5 text-fuchsia-400" />
-                      Nested Entity Annotation
-                    </h4>
-                    <p className="text-muted-foreground">
-                      Handling complex cases where entities are contained within other entities (e.g., 'Bank of America' contains both an organization and a location). Supports hierarchical entity structures for sophisticated NLP models.
-                    </p>
-                  </div>
-                </div>
-                <div className="order-1 md:order-2">
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="p-3 rounded-xl bg-gradient-to-r from-fuchsia-600 to-purple-600">
-                      <Layers className="w-8 h-8 text-white" />
-                    </div>
-                    <h3 className="text-3xl font-bold text-white">Entity Recognition</h3>
-                  </div>
-                  <p className="text-muted-foreground text-lg mb-6">
-                    Our entity recognition services enable sophisticated natural language understanding by identifying and classifying named entities within text data. We provide comprehensive annotation for standard entity types (persons, organizations, locations) as well as custom domain-specific entities.
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-fuchsia-400" />
+                    Nested Entity Annotation
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Handling complex cases where entities are contained within other entities (e.g., 'Bank of America' contains both an organization and a location). Supports hierarchical entity structures for sophisticated NLP models.
                   </p>
-                  <p className="text-muted-foreground text-lg">
-                    Our services include relationship extraction, co-reference resolution, and nested entity annotation for complex NLP applications including information retrieval, question answering, document understanding, and knowledge management systems.
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-fuchsia-400" />
+                    Entity Linking and Disambiguation
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Connecting identified entities to knowledge bases and resolving ambiguous references. Maps entities to unique identifiers in databases like Wikipedia or domain-specific ontologies for enhanced semantic understanding.
                   </p>
                 </div>
               </div>
@@ -416,22 +456,24 @@ export default function DataAnnotationPage() {
               viewport={{ once: true }}
               className="mb-24"
             >
-              <div className="grid md:grid-cols-2 gap-12 items-start">
-                <div>
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="p-3 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600">
-                      <Mic className="w-8 h-8 text-white" />
-                    </div>
-                    <h3 className="text-3xl font-bold text-white">Audio Annotation</h3>
+              {/* Title and Description - Full Width */}
+              <div className="mb-8">
+                <div className="flex items-center justify-center gap-4 mb-6">
+                  <div className="p-3 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600">
+                    <Mic className="w-8 h-8 text-white" />
                   </div>
-                  <p className="text-muted-foreground text-lg mb-6">
-                    Our audio annotation services provide precise labeling for training speech recognition, speaker identification, and sound classification AI models. We offer accurate transcription, speaker diarization, sound event detection, acoustic scene labeling, and audio quality assessment.
-                  </p>
-                  <p className="text-muted-foreground text-lg">
-                    Our experienced annotators work with various audio formats and handle challenging scenarios like noisy environments, multiple speakers, and diverse accents, supporting applications from voice assistants to audio surveillance and accessibility services.
-                  </p>
+                  <h3 className="text-3xl font-bold text-white">Audio Annotation</h3>
                 </div>
-                <div className="space-y-4">
+                <p className="text-muted-foreground text-lg mb-4">
+                  Our audio annotation services provide precise labeling for training speech recognition, speaker identification, and sound classification AI models. We offer accurate transcription, speaker diarization, sound event detection, acoustic scene labeling, and audio quality assessment.
+                </p>
+                <p className="text-muted-foreground text-lg">
+                  Our experienced annotators work with various audio formats and handle challenging scenarios like noisy environments, multiple speakers, and diverse accents, supporting applications from voice assistants to audio surveillance and accessibility services.
+                </p>
+              </div>
+
+              {/* Capabilities in Columns */}
+              <div className="grid md:grid-cols-2 gap-6">
                   <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
                     <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
                       <CheckCircle className="w-5 h-5 text-cyan-400" />
@@ -468,15 +510,23 @@ export default function DataAnnotationPage() {
                       Classifying the overall acoustic environment (e.g., office, street, park, restaurant). Provides context for audio understanding and enables scene-aware AI applications for enhanced user experiences.
                     </p>
                   </div>
-                  <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                    <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                      <CheckCircle className="w-5 h-5 text-cyan-400" />
-                      Audio Quality Assessment
-                    </h4>
-                    <p className="text-muted-foreground">
-                      Evaluating audio quality factors like clarity, noise levels, distortion, and speech intelligibility. Helps filter training data and ensures optimal model performance with standardized quality metrics.
-                    </p>
-                  </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-cyan-400" />
+                    Audio Quality Assessment
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Evaluating audio quality factors like clarity, noise levels, distortion, and speech intelligibility. Helps filter training data and ensures optimal model performance with standardized quality metrics.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-cyan-400" />
+                    Emotion and Prosody Labeling
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Annotating emotional expression, tone, stress patterns, and intonation in speech. Essential for emotion recognition systems, virtual assistants, and applications requiring nuanced voice analysis and sentiment detection.
+                  </p>
                 </div>
               </div>
             </motion.div>
@@ -488,8 +538,24 @@ export default function DataAnnotationPage() {
               viewport={{ once: true }}
               className="mb-24"
             >
-              <div className="grid md:grid-cols-2 gap-12 items-start">
-                <div className="space-y-4 order-2 md:order-1">
+              {/* Title and Description - Full Width */}
+              <div className="mb-8">
+                <div className="flex items-center justify-center gap-4 mb-6">
+                  <div className="p-3 rounded-xl bg-gradient-to-r from-pink-600 to-rose-600">
+                    <Video className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-3xl font-bold text-white">Video Tagging</h3>
+                </div>
+                <p className="text-muted-foreground text-lg mb-4">
+                  Our video tagging services provide comprehensive temporal and spatial annotations for training video understanding AI models. We specialize in action recognition, temporal event segmentation, object tracking, scene annotation, and content moderation.
+                </p>
+                <p className="text-muted-foreground text-lg">
+                  Our annotators handle complex video sequences, ensuring consistent labeling across frames and accurate temporal boundaries for events and activities. Perfect for sports analytics, security systems, content platforms, and autonomous vehicles.
+                </p>
+              </div>
+
+              {/* Capabilities in Columns */}
+              <div className="grid md:grid-cols-2 gap-6">
                   <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
                     <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
                       <CheckCircle className="w-5 h-5 text-pink-400" />
@@ -526,28 +592,22 @@ export default function DataAnnotationPage() {
                       Labeling the overall scene type, location, setting, and contextual information for video segments. Provides high-level understanding for content categorization and retrieval with hierarchical scene taxonomies.
                     </p>
                   </div>
-                  <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                    <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                      <CheckCircle className="w-5 h-5 text-pink-400" />
-                      Video Quality and Content Moderation
-                    </h4>
-                    <p className="text-muted-foreground">
-                      Identifying inappropriate content, quality issues, and policy violations in video. Includes detection of violence, adult content, hate speech, and other sensitive material for platform safety and compliance.
-                    </p>
-                  </div>
-                </div>
-                <div className="order-1 md:order-2">
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="p-3 rounded-xl bg-gradient-to-r from-pink-600 to-rose-600">
-                      <Video className="w-8 h-8 text-white" />
-                    </div>
-                    <h3 className="text-3xl font-bold text-white">Video Tagging</h3>
-                  </div>
-                  <p className="text-muted-foreground text-lg mb-6">
-                    Our video tagging services provide comprehensive temporal and spatial annotations for training video understanding AI models. We specialize in action recognition, temporal event segmentation, object tracking, scene annotation, and content moderation.
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-pink-400" />
+                    Video Quality and Content Moderation
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Identifying inappropriate content, quality issues, and policy violations in video. Includes detection of violence, adult content, hate speech, and other sensitive material for platform safety and compliance.
                   </p>
-                  <p className="text-muted-foreground text-lg">
-                    Our annotators handle complex video sequences, ensuring consistent labeling across frames and accurate temporal boundaries for events and activities. Perfect for sports analytics, security systems, content platforms, and autonomous vehicles.
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-pink-400" />
+                    Multi-Camera and View Synchronization
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Coordinating annotations across multiple camera angles and viewpoints for the same scene. Critical for 3D reconstruction, sports analytics, and surveillance systems requiring comprehensive spatial understanding.
                   </p>
                 </div>
               </div>
