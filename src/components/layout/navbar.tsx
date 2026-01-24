@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { AppointmentModal } from "@/components/ui/appointment-modal";
 
 const navItems = [
   {
@@ -36,6 +37,7 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,16 +48,17 @@ export function Navbar() {
   }, []);
 
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled
-          ? "bg-background/80 backdrop-blur-lg border-b border-border shadow-lg"
-          : "bg-transparent"
-      )}
-    >
+    <>
+      <motion.header
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        className={cn(
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+          isScrolled
+            ? "bg-background/80 backdrop-blur-lg border-b border-border shadow-lg"
+            : "bg-transparent"
+        )}
+      >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -132,14 +135,13 @@ export function Navbar() {
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center space-x-4">
-            <a href="https://calendar.app.google/aWpNoodRNFatz39u7" target="_blank" rel="noopener noreferrer">
-              <Button
-                variant="default"
-                className="bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700"
-              >
-                Connect Now
-              </Button>
-            </a>
+            <Button
+              variant="default"
+              onClick={() => setIsModalOpen(true)}
+              className="bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700"
+            >
+              Connect Now
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -191,17 +193,29 @@ export function Navbar() {
                   </div>
                 ))}
                 <div className="pt-4">
-                  <a href="https://calendar.app.google/aWpNoodRNFatz39u7" target="_blank" rel="noopener noreferrer" onClick={() => setIsMobileMenuOpen(false)}>
-                    <Button className="w-full bg-gradient-to-r from-violet-600 to-indigo-600">
-                      Connect now
-                    </Button>
-                  </a>
+                  <Button 
+                    className="w-full bg-gradient-to-r from-violet-600 to-indigo-600"
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      setIsModalOpen(true);
+                    }}
+                  >
+                    Connect now
+                  </Button>
                 </div>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
       </nav>
-    </motion.header>
+      </motion.header>
+      
+      {/* Appointment Modal - Rendered outside header to avoid positioning issues */}
+      <AppointmentModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        appointmentUrl="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0-2HacjoEaGmbT8c2DojXpF5MUpHvL9fvDuOK83py17R0RYHWnh8jfRf8a4mVDParjfSakNJ2X"
+      />
+    </>
   );
 }

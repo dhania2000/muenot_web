@@ -516,11 +516,7 @@ export default function ContactPage() {
                   <div>
                     <ReCAPTCHA
                       ref={recaptchaRef}
-                      sitekey={
-                        typeof window !== "undefined" && window.location.hostname === "localhost"
-                          ? "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" // Google's test key for localhost
-                          : process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!
-                      }
+                      sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
                       onChange={handleCaptchaChange}
                       theme="dark"
                     />

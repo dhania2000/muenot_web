@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 import {
   Cpu,
   Tag,
@@ -10,6 +11,7 @@ import {
   Sparkles,
   BarChart3,
   CheckSquare,
+  ArrowRight,
 } from "lucide-react";
 
 const aiCategories = [
@@ -19,6 +21,7 @@ const aiCategories = [
       "Precise labeling for computer vision, NLP, and audio/video AI models",
     icon: Tag,
     gradient: "from-violet-500 to-purple-500",
+    href: "/services/data-annotation",
     services: [
       "Image Labeling",
       "Object Detection",
@@ -34,6 +37,7 @@ const aiCategories = [
       "Clean, structure, and validate your data for optimal AI performance",
     icon: Database,
     gradient: "from-indigo-500 to-violet-500",
+    href: "/services/data-curation",
     services: [
       "Data Cleaning",
       "Data Structuring",
@@ -49,6 +53,7 @@ const aiCategories = [
       "Comprehensive training data and human feedback for AI models",
     icon: Cpu,
     gradient: "from-purple-500 to-pink-500",
+    href: "/services/model-training",
     services: [
       "Training Datasets",
       "RLHF Support",
@@ -64,6 +69,7 @@ const aiCategories = [
       "Expert human oversight to enhance AI accuracy and reliability",
     icon: Users,
     gradient: "from-fuchsia-500 to-purple-500",
+    href: "/services/human-in-the-loop",
     services: [
       "Quality Assurance",
       "Model Evaluation",
@@ -79,6 +85,7 @@ const aiCategories = [
       "Specialized services for large language model development",
     icon: Sparkles,
     gradient: "from-violet-500 to-indigo-500",
+    href: "/services/llm-services",
     services: [
       "Prompt Engineering",
       "Fine-tuning Data",
@@ -94,6 +101,7 @@ const aiCategories = [
       "Data-driven insights to measure and improve AI performance",
     icon: BarChart3,
     gradient: "from-purple-500 to-violet-500",
+    href: "/services/ai-analytics",
     services: [
       "Performance Metrics",
       "Quality Reports",
@@ -148,51 +156,54 @@ export function AIDataServices() {
               transition={{ delay: index * 0.1 }}
               className="group"
             >
-              <div className="relative h-full p-6 rounded-2xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border hover:border-violet-500/30 transition-all duration-300">
-                {/* Glow Effect */}
-                <div
-                  className={cn(
-                    "absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500",
-                    `bg-gradient-to-r ${category.gradient}`
-                  )}
-                  style={{
-                    transform: "scale(0.9)",
-                    filter: "blur(40px)",
-                    zIndex: -1,
-                  }}
-                />
+              <Link href={category.href}>
+                <div className="relative h-full p-6 rounded-2xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border hover:border-violet-500/30 transition-all duration-300 cursor-pointer">
+                  {/* Glow Effect */}
+                  <div
+                    className={cn(
+                      "absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500",
+                      `bg-gradient-to-r ${category.gradient}`
+                    )}
+                    style={{
+                      transform: "scale(0.9)",
+                      filter: "blur(40px)",
+                      zIndex: -1,
+                    }}
+                  />
 
-                {/* Icon */}
-                <div
-                  className={cn(
-                    "w-12 h-12 rounded-xl flex items-center justify-center mb-4",
-                    `bg-gradient-to-r ${category.gradient}`
-                  )}
-                >
-                  <category.icon className="w-6 h-6 text-white" />
+                  {/* Icon */}
+                  <div
+                    className={cn(
+                      "w-12 h-12 rounded-xl flex items-center justify-center mb-4",
+                      `bg-gradient-to-r ${category.gradient}`
+                    )}
+                  >
+                    <category.icon className="w-6 h-6 text-white" />
+                  </div>
+
+                  {/* Content */}
+                  <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-violet-300 transition-colors flex items-center justify-between">
+                    {category.title}
+                    <ArrowRight className="w-5 h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                  </h3>
+                  <p className="text-muted-foreground text-sm mb-4">
+                    {category.description}
+                  </p>
+
+                  {/* Services List */}
+                  <ul className="space-y-2">
+                    {category.services.map((service) => (
+                      <li
+                        key={service}
+                        className="flex items-center gap-2 text-sm text-muted-foreground"
+                      >
+                        <CheckSquare className="w-4 h-4 text-violet-400/60" />
+                        {service}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-
-                {/* Content */}
-                <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-violet-300 transition-colors">
-                  {category.title}
-                </h3>
-                <p className="text-muted-foreground text-sm mb-4">
-                  {category.description}
-                </p>
-
-                {/* Services List */}
-                <ul className="space-y-2">
-                  {category.services.map((service) => (
-                    <li
-                      key={service}
-                      className="flex items-center gap-2 text-sm text-muted-foreground"
-                    >
-                      <CheckSquare className="w-4 h-4 text-violet-400/60" />
-                      {service}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              </Link>
             </motion.div>
           ))}
         </div>

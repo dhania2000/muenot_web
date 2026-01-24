@@ -16,6 +16,7 @@ interface ContactFormData {
 // Verify reCAPTCHA token
 async function verifyCaptcha(token: string): Promise<boolean> {
   if (!process.env.RECAPTCHA_SECRET_KEY) {
+    console.error("RECAPTCHA_SECRET_KEY is not configured");
     throw new Error("RECAPTCHA_SECRET_KEY is not configured");
   }
 
@@ -25,6 +26,18 @@ async function verifyCaptcha(token: string): Promise<boolean> {
       { method: "POST" }
     );
     const data = await response.json();
+    
+    // Log the full response for debugging
+    console.log("reCAPTCHA verification response:", JSON.stringify(data, null, 2));
+    
+    if (!data.success) {
+      console.error("reCAPTCHA verification failed:", {
+        success: data.success,
+        errorCodes: data["error-codes"],
+        hostname: data.hostname,
+      });
+    }
+    
     return data.success === true;
   } catch (error) {
     console.error("reCAPTCHA verification error:", error);

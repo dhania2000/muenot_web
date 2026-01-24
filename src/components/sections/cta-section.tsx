@@ -5,8 +5,12 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { SparklesCore } from "@/components/ui/sparkles";
 import { ArrowRight, MessageCircle, Calendar } from "lucide-react";
+import { AppointmentModal } from "@/components/ui/appointment-modal";
+import { useState } from "react";
 
 export function CTASection() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <section id="cta-section" className="relative py-24 overflow-hidden">
       {/* Background */}
@@ -73,16 +77,15 @@ export function CTASection() {
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
-            <a href="https://calendar.app.google/aWpNoodRNFatz39u7" target="_blank" rel="noopener noreferrer">
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-violet-500/30 hover:bg-violet-500/10 px-8 py-6 text-lg rounded-xl"
-              >
-                <Calendar className="mr-2 w-5 h-5" />
-                Schedule a Call
-              </Button>
-            </a>
+            <Button
+              size="lg"
+              variant="outline"
+              onClick={() => setIsModalOpen(true)}
+              className="border-violet-500/30 hover:bg-violet-500/10 px-8 py-6 text-lg rounded-xl"
+            >
+              <Calendar className="mr-2 w-5 h-5" />
+              Schedule a Call
+            </Button>
           </div>
 
           {/* Trust Badges */}
@@ -105,6 +108,13 @@ export function CTASection() {
           </div>
         </motion.div>
       </div>
+
+      {/* Appointment Modal */}
+      <AppointmentModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        appointmentUrl="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0-2HacjoEaGmbT8c2DojXpF5MUpHvL9fvDuOK83py17R0RYHWnh8jfRf8a4mVDParjfSakNJ2X"
+      />
     </section>
   );
 }
