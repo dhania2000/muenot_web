@@ -21,7 +21,7 @@ const navItems = [
       { name: "Publishing", href: "/#publishing" },
     ],
   },
-  { name: "About", href: "/#about" },
+  { name: "About", href: "/about" },
   {
     name: "Insights",
     href: "/#insights",

@@ -16,7 +16,6 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const artServices = {
   illustration: {
@@ -112,7 +111,7 @@ export default function ArtProductionPage() {
       <Navbar />
       <main className="min-h-screen bg-black">
         {/* Back Button */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-24">
           <Link href="/#elearning">
             <Button variant="ghost" className="text-muted-foreground hover:text-white mb-4">
               <ArrowLeft className="w-4 h-4 mr-2" />
@@ -122,7 +121,7 @@ export default function ArtProductionPage() {
         </div>
 
         {/* Hero Section - Split Screen */}
-        <section className="relative pt-8 pb-24 overflow-hidden">
+        <section className="relative pt-4 sm:pt-8 pb-16 sm:pb-24 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-tr from-orange-950/20 via-black to-amber-950/20" />
           <div className="absolute inset-0" style={{
             backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(251,146,60,0.03) 35px, rgba(251,146,60,0.03) 70px)'
@@ -140,14 +139,14 @@ export default function ArtProductionPage() {
                   <span className="text-sm text-orange-300">E-Learning Services</span>
                 </div>
 
-                <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+                <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-white mb-4 sm:mb-6">
                   Art Production
                   <span className="block bg-clip-text text-transparent bg-gradient-to-r from-orange-400 via-amber-400 to-yellow-400 mt-2">
                     Visual Excellence
                   </span>
                 </h1>
 
-                <p className="text-xl text-muted-foreground mb-12 leading-relaxed max-w-3xl mx-auto">
+                <p className="text-base sm:text-xl text-muted-foreground mb-8 sm:mb-12 leading-relaxed max-w-3xl mx-auto">
                   Transform educational content with professional visual design. From custom illustrations to infographics, our artists create compelling visuals that enhance learning and engagement.
                 </p>
 
@@ -171,15 +170,15 @@ export default function ArtProductionPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 w-full max-w-5xl"
+                className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mt-8 sm:mt-16 w-full max-w-5xl"
               >
                 {showcase.map((item, index) => (
                   <div
                     key={item.category}
-                    className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border"
+                    className="p-4 sm:p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border"
                   >
-                    <item.icon className="w-8 h-8 text-orange-400 mb-3 mx-auto" />
-                    <div className="text-2xl md:text-3xl font-bold text-orange-400 mb-1">{item.count}</div>
+                    <item.icon className="w-6 sm:w-8 h-6 sm:h-8 text-orange-400 mb-2 sm:mb-3 mx-auto" />
+                    <div className="text-xl sm:text-2xl md:text-3xl font-bold text-orange-400 mb-1">{item.count}</div>
                     <div className="text-xs md:text-sm text-muted-foreground">{item.category}</div>
                   </div>
                 ))}
@@ -188,112 +187,120 @@ export default function ArtProductionPage() {
           </div>
         </section>
 
-        {/* Services Section - Tabbed Layout */}
-        <section id="services" className="relative py-24">
+        {/* Services Section - Card Grid Layout */}
+        <section id="services" className="relative py-12 sm:py-24 scroll-mt-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-16"
+              className="text-center mb-8 sm:mb-16"
             >
-              <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+              <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white mb-4">
                 Our Art Production
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-amber-400"> Services</span>
               </h2>
-              <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
+              <p className="text-muted-foreground text-base sm:text-lg max-w-3xl mx-auto">
                 Comprehensive visual design solutions for educational content
               </p>
             </motion.div>
 
-            <Tabs defaultValue="illustration" className="w-full">
-              <TabsList className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 bg-secondary/20 p-2 rounded-xl mb-12">
-                {Object.keys(artServices).map((key) => (
-                  <TabsTrigger 
-                    key={key} 
-                    value={key}
-                    className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-orange-600 data-[state=active]:to-amber-600 data-[state=active]:text-white"
-                  >
-                    {artServices[key as keyof typeof artServices].title.split(' ')[0]}
-                  </TabsTrigger>
-                ))}
-              </TabsList>
-
-              {Object.entries(artServices).map(([key, service]) => (
-                <TabsContent key={key} value={key} className="mt-0">
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="grid md:grid-cols-2 gap-8"
-                  >
-                    {/* Left Column - Info */}
-                    <div className="p-8 rounded-2xl bg-gradient-to-br from-secondary/50 to-secondary/20 border border-border">
-                      <h3 className="text-3xl font-bold text-white mb-4">{service.title}</h3>
-                      <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
+            <div className="space-y-8 sm:space-y-12">
+              {Object.entries(artServices).map(([key, service], index) => (
+                <motion.div
+                  key={key}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="rounded-2xl bg-gradient-to-br from-secondary/50 to-secondary/20 border border-border overflow-hidden"
+                >
+                  <div className="grid lg:grid-cols-5 gap-6 p-4 sm:p-6 lg:p-8">
+                    {/* Service Header */}
+                    <div className="lg:col-span-2">
+                      <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3">{service.title}</h3>
+                      <p className="text-muted-foreground text-sm sm:text-base mb-6 leading-relaxed">
                         {service.description}
                       </p>
 
-                      <h4 className="text-lg font-semibold text-white mb-4">Our Capabilities</h4>
                       <div className="space-y-3">
-                        {service.capabilities.map((capability) => (
-                          <div key={capability} className="flex items-start gap-3">
-                            <Sparkles className="w-5 h-5 text-orange-400 shrink-0 mt-0.5" />
-                            <span className="text-muted-foreground">{capability}</span>
-                          </div>
-                        ))}
+                        <h4 className="text-base sm:text-lg font-semibold text-white">Our Capabilities</h4>
+                        <div className="space-y-2">
+                          {service.capabilities.map((capability) => (
+                            <div key={capability} className="flex items-start gap-2">
+                              <Sparkles className="w-4 h-4 text-orange-400 shrink-0 mt-0.5" />
+                              <span className="text-muted-foreground text-sm">{capability}</span>
+                            </div>
+                          ))}
+                        </div>
                       </div>
                     </div>
 
-                    {/* Right Column - Styles */}
-                    <div className="space-y-6">
-                      <div className="p-8 rounded-2xl bg-gradient-to-br from-orange-500/10 to-amber-500/10 border border-orange-500/20">
-                        <h4 className="text-lg font-semibold text-white mb-4">Available Styles</h4>
-                        <div className="grid grid-cols-2 gap-3">
+                    {/* Styles Grid */}
+                    <div className="lg:col-span-3 space-y-6">
+                      <div className="p-4 sm:p-6 rounded-xl bg-gradient-to-br from-orange-500/10 to-amber-500/10 border border-orange-500/20">
+                        <h4 className="text-base sm:text-lg font-semibold text-white mb-4">Available Styles</h4>
+                        <div className="grid grid-cols-3 gap-3">
                           {service.styles.map((style) => (
                             <div
                               key={style}
                               className="p-3 rounded-lg bg-gradient-to-r from-orange-600/20 to-amber-600/20 border border-orange-500/30 text-center"
                             >
-                              <span className="text-white font-medium">{style}</span>
+                              <span className="text-white font-medium text-sm">{style}</span>
                             </div>
                           ))}
                         </div>
                       </div>
 
-                      <div className="p-8 rounded-2xl bg-gradient-to-br from-secondary/50 to-secondary/20 border border-border">
-                        <h4 className="text-lg font-semibold text-white mb-4">Deliverables</h4>
-                        <ul className="space-y-2 text-muted-foreground">
-                          <li>• High-resolution source files</li>
-                          <li>• Multiple format exports (PNG, SVG, PDF, etc.)</li>
-                          <li>• Editable working files</li>
-                          <li>• Usage guidelines and documentation</li>
-                          <li>• Revision rounds included</li>
+                      <div className="p-4 sm:p-6 rounded-xl bg-black/30 border border-border">
+                        <h4 className="text-base sm:text-lg font-semibold text-white mb-4">Deliverables</h4>
+                        <ul className="grid sm:grid-cols-2 gap-2 text-muted-foreground text-sm">
+                          <li className="flex items-start gap-2">
+                            <span className="text-orange-400">•</span>
+                            High-resolution source files
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <span className="text-orange-400">•</span>
+                            Multiple format exports
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <span className="text-orange-400">•</span>
+                            Editable working files
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <span className="text-orange-400">•</span>
+                            Usage guidelines
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <span className="text-orange-400">•</span>
+                            Revision rounds included
+                          </li>
                         </ul>
                       </div>
                     </div>
-                  </motion.div>
-                </TabsContent>
+                  </div>
+                </motion.div>
               ))}
-            </Tabs>
+            </div>
           </div>
         </section>
 
         {/* Why Choose Section - Feature Grid */}
-        <section className="relative py-24 bg-gradient-to-b from-orange-950/10 to-black">
+        <section className="relative py-12 sm:py-24 bg-gradient-to-b from-orange-950/10 to-black">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-16"
+              className="text-center mb-8 sm:mb-16"
             >
-              <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+              <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white mb-4">
                 Why Choose Our
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-amber-400"> Art Team</span>
               </h2>
             </motion.div>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-4 sm:gap-8">
               {[
                 {
                   title: "Educational Expertise",
@@ -332,11 +339,11 @@ export default function ArtProductionPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="p-6 rounded-2xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border hover:border-orange-500/50 transition-all duration-300"
+                  className="p-4 sm:p-6 rounded-2xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border hover:border-orange-500/50 transition-all duration-300"
                 >
-                  <feature.icon className="w-10 h-10 text-orange-400 mb-4" />
-                  <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
-                  <p className="text-muted-foreground">{feature.description}</p>
+                  <feature.icon className="w-8 sm:w-10 h-8 sm:h-10 text-orange-400 mb-3 sm:mb-4" />
+                  <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">{feature.title}</h3>
+                  <p className="text-muted-foreground text-sm sm:text-base">{feature.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -344,23 +351,23 @@ export default function ArtProductionPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="relative py-24">
+        <section className="relative py-12 sm:py-24">
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="p-8 md:p-12 rounded-3xl bg-gradient-to-br from-orange-500/10 to-amber-500/10 border border-orange-500/20"
+              className="p-6 sm:p-8 md:p-12 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-orange-500/10 to-amber-500/10 border border-orange-500/20"
             >
-              <Palette className="w-12 h-12 text-orange-400 mx-auto mb-6" />
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              <Palette className="w-10 sm:w-12 h-10 sm:h-12 text-orange-400 mx-auto mb-4 sm:mb-6" />
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4">
                 Let's Create Something Amazing
               </h2>
-              <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-muted-foreground text-sm sm:text-lg mb-6 sm:mb-8 max-w-2xl mx-auto">
                 Transform your educational content with professional visual design. Get a free consultation and sample artwork for your project.
               </p>
               <Link href="/contact">
-                <Button size="lg" className="bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700 text-white px-8 py-6 text-lg rounded-xl">
+                <Button size="lg" className="bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700 text-white px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg rounded-xl">
                   Start Your Project
                 </Button>
               </Link>
