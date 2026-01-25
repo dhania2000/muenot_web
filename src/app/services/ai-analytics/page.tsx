@@ -49,7 +49,7 @@ export default function AIAnalyticsPage() {
                 <BarChart3 className="w-4 h-4 text-emerald-400" />
                 <span className="text-sm text-emerald-300">AI Data Services</span>
               </div>
-              
+
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
                 AI Analytics Services
                 <br />
@@ -57,7 +57,7 @@ export default function AIAnalyticsPage() {
                   for Data-Driven Insights
                 </span>
               </h1>
-              
+
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
                 Comprehensive analytics and monitoring for AI systems. Track performance, detect issues, and optimize models with actionable insights from detailed metrics and reports.
               </p>
@@ -279,6 +279,249 @@ export default function AIAnalyticsPage() {
               </div>
             </motion.div>
 
+
+            {/* Trend Analysis Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mb-24"
+            >
+              <div className="mb-8">
+                <div className="flex items-center justify-center gap-4 mb-6">
+                  <div className="p-3 rounded-xl bg-gradient-to-r from-teal-600 to-cyan-600">
+                    <PieChart className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-3xl font-bold text-white">Trend Analysis</h3>
+                </div>
+                <p className="text-muted-foreground text-lg mb-4">
+                  Detailed quality assessment reports providing comprehensive analysis of model outputs, data quality, and system reliability. Our reports combine automated analysis with expert human evaluation for complete quality visibility.
+                </p>
+                <p className="text-muted-foreground text-lg">
+                  Regular quality reports keep stakeholders informed and guide improvement initiatives. Includes executive summaries, technical deep-dives, and actionable recommendations.
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-teal-400" />
+                    Output Quality Analysis
+                  </h4>
+                  <p className="text-muted-foreground">
+                    In-depth assessment of model output quality across multiple dimensions. Identifies patterns in errors, edge cases, and exceptional performance.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-teal-400" />
+                    Data Quality Assessment
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Evaluation of training and inference data quality. Identifies issues like missing values, outliers, bias, and distribution shifts affecting model performance.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-teal-400" />
+                    Fairness and Bias Reports
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Specialized reports analyzing model fairness across demographic groups. Detects and quantifies bias to ensure equitable AI systems.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-teal-400" />
+                    Incident Analysis
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Post-mortem analysis of model failures and system incidents. Identifies root causes and provides recommendations to prevent recurrence.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-teal-400" />
+                    Compliance Documentation
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Reports formatted for regulatory compliance and audit purposes. Documents model behavior, testing procedures, and quality assurance processes.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-teal-400" />
+                    Improvement Roadmaps
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Prioritized recommendations for model and system improvements. Data-driven roadmaps that maximize impact of development efforts.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+
+            {/* ROI Tracking Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mb-24"
+            >
+              <div className="mb-8">
+                <div className="flex items-center justify-center gap-4 mb-6">
+                  <div className="p-3 rounded-xl bg-gradient-to-r from-teal-600 to-cyan-600">
+                    <PieChart className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-3xl font-bold text-white">ROI Tracking</h3>
+                </div>
+                <p className="text-muted-foreground text-lg mb-4">
+                  Detailed quality assessment reports providing comprehensive analysis of model outputs, data quality, and system reliability. Our reports combine automated analysis with expert human evaluation for complete quality visibility.
+                </p>
+                <p className="text-muted-foreground text-lg">
+                  Regular quality reports keep stakeholders informed and guide improvement initiatives. Includes executive summaries, technical deep-dives, and actionable recommendations.
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-teal-400" />
+                    Output Quality Analysis
+                  </h4>
+                  <p className="text-muted-foreground">
+                    In-depth assessment of model output quality across multiple dimensions. Identifies patterns in errors, edge cases, and exceptional performance.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-teal-400" />
+                    Data Quality Assessment
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Evaluation of training and inference data quality. Identifies issues like missing values, outliers, bias, and distribution shifts affecting model performance.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-teal-400" />
+                    Fairness and Bias Reports
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Specialized reports analyzing model fairness across demographic groups. Detects and quantifies bias to ensure equitable AI systems.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-teal-400" />
+                    Incident Analysis
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Post-mortem analysis of model failures and system incidents. Identifies root causes and provides recommendations to prevent recurrence.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-teal-400" />
+                    Compliance Documentation
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Reports formatted for regulatory compliance and audit purposes. Documents model behavior, testing procedures, and quality assurance processes.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-teal-400" />
+                    Improvement Roadmaps
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Prioritized recommendations for model and system improvements. Data-driven roadmaps that maximize impact of development efforts.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+
+            {/* Model Comparison Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mb-24"
+            >
+              <div className="mb-8">
+                <div className="flex items-center justify-center gap-4 mb-6">
+                  <div className="p-3 rounded-xl bg-gradient-to-r from-teal-600 to-cyan-600">
+                    <PieChart className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-3xl font-bold text-white">Model Comparison</h3>
+                </div>
+                <p className="text-muted-foreground text-lg mb-4">
+                  Detailed quality assessment reports providing comprehensive analysis of model outputs, data quality, and system reliability. Our reports combine automated analysis with expert human evaluation for complete quality visibility.
+                </p>
+                <p className="text-muted-foreground text-lg">
+                  Regular quality reports keep stakeholders informed and guide improvement initiatives. Includes executive summaries, technical deep-dives, and actionable recommendations.
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-teal-400" />
+                    Output Quality Analysis
+                  </h4>
+                  <p className="text-muted-foreground">
+                    In-depth assessment of model output quality across multiple dimensions. Identifies patterns in errors, edge cases, and exceptional performance.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-teal-400" />
+                    Data Quality Assessment
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Evaluation of training and inference data quality. Identifies issues like missing values, outliers, bias, and distribution shifts affecting model performance.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-teal-400" />
+                    Fairness and Bias Reports
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Specialized reports analyzing model fairness across demographic groups. Detects and quantifies bias to ensure equitable AI systems.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-teal-400" />
+                    Incident Analysis
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Post-mortem analysis of model failures and system incidents. Identifies root causes and provides recommendations to prevent recurrence.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-teal-400" />
+                    Compliance Documentation
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Reports formatted for regulatory compliance and audit purposes. Documents model behavior, testing procedures, and quality assurance processes.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-teal-400" />
+                    Improvement Roadmaps
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Prioritized recommendations for model and system improvements. Data-driven roadmaps that maximize impact of development efforts.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
             {/* Drift Detection Section */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -364,7 +607,7 @@ export default function AIAnalyticsPage() {
         {/* CTA Section */}
         <section className="relative py-24">
           <div className="absolute inset-0 bg-gradient-to-b from-black via-emerald-950/10 to-black" />
-          
+
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}

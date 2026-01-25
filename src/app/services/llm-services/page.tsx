@@ -49,7 +49,7 @@ export default function LLMServicesPage() {
                 <MessageCircle className="w-4 h-4 text-cyan-400" />
                 <span className="text-sm text-cyan-300">AI Data Services</span>
               </div>
-              
+
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
                 LLM Services
                 <br />
@@ -57,7 +57,7 @@ export default function LLMServicesPage() {
                   for Advanced Language Models
                 </span>
               </h1>
-              
+
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
                 Specialized services for large language models including prompt engineering, fine-tuning data, response evaluation, and safety testing. Optimize your LLMs for accuracy, safety, and user satisfaction.
               </p>
@@ -358,13 +358,253 @@ export default function LLMServicesPage() {
                 </div>
               </div>
             </motion.div>
+
+            {/* Safety Evaluation Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mb-24"
+            >
+              <div className="mb-8">
+                <div className="flex items-center justify-center gap-4 mb-6">
+                  <div className="p-3 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600">
+                    <Star className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-3xl font-bold text-white">Safety Evaluation</h3>
+                </div>
+                <p className="text-muted-foreground text-lg mb-4">
+                  Expert human evaluation of LLM outputs across multiple quality dimensions. We assess accuracy, helpfulness, coherence, safety, and user satisfaction to provide comprehensive performance feedback.
+                </p>
+                <p className="text-muted-foreground text-lg">
+                  Our rating frameworks use detailed rubrics and multiple evaluators to ensure reliable, consistent assessments. Ratings inform model improvement and guide deployment decisions.
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-indigo-400" />
+                    Multi-Dimensional Scoring
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Evaluation across multiple quality dimensions including accuracy, relevance, fluency, and completeness. Provides nuanced understanding of model strengths and weaknesses.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-indigo-400" />
+                    Comparative Evaluation
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Side-by-side comparison of responses from different models or model versions. Identifies which approaches work best for specific query types.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-indigo-400" />
+                    Hallucination Detection
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Identification of factually incorrect or fabricated information in model outputs. Critical for applications requiring high accuracy and trustworthiness.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-indigo-400" />
+                    User Intent Alignment
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Assessment of how well responses address user intent and information needs. Goes beyond surface-level relevance to evaluate true helpfulness.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-indigo-400" />
+                    Style and Tone Evaluation
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Judging appropriateness of response style, tone, and formality for different contexts. Ensures outputs match desired communication style.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-indigo-400" />
+                    Detailed Feedback Collection
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Qualitative feedback explaining ratings and identifying specific issues or strengths. Provides actionable insights for model improvement beyond numeric scores.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Hallucination Detection Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mb-24"
+            >
+              <div className="mb-8">
+                <div className="flex items-center justify-center gap-4 mb-6">
+                  <div className="p-3 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600">
+                    <Star className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-3xl font-bold text-white">Hallucination Detection</h3>
+                </div>
+                <p className="text-muted-foreground text-lg mb-4">
+                  Expert human evaluation of LLM outputs across multiple quality dimensions. We assess accuracy, helpfulness, coherence, safety, and user satisfaction to provide comprehensive performance feedback.
+                </p>
+                <p className="text-muted-foreground text-lg">
+                  Our rating frameworks use detailed rubrics and multiple evaluators to ensure reliable, consistent assessments. Ratings inform model improvement and guide deployment decisions.
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-indigo-400" />
+                    Multi-Dimensional Scoring
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Evaluation across multiple quality dimensions including accuracy, relevance, fluency, and completeness. Provides nuanced understanding of model strengths and weaknesses.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-indigo-400" />
+                    Comparative Evaluation
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Side-by-side comparison of responses from different models or model versions. Identifies which approaches work best for specific query types.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-indigo-400" />
+                    Hallucination Detection
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Identification of factually incorrect or fabricated information in model outputs. Critical for applications requiring high accuracy and trustworthiness.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-indigo-400" />
+                    User Intent Alignment
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Assessment of how well responses address user intent and information needs. Goes beyond surface-level relevance to evaluate true helpfulness.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-indigo-400" />
+                    Style and Tone Evaluation
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Judging appropriateness of response style, tone, and formality for different contexts. Ensures outputs match desired communication style.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-indigo-400" />
+                    Detailed Feedback Collection
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Qualitative feedback explaining ratings and identifying specific issues or strengths. Provides actionable insights for model improvement beyond numeric scores.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Benchmark Testing Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mb-24"
+            >
+              <div className="mb-8">
+                <div className="flex items-center justify-center gap-4 mb-6">
+                  <div className="p-3 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600">
+                    <Star className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-3xl font-bold text-white">Benchmark Testing</h3>
+                </div>
+                <p className="text-muted-foreground text-lg mb-4">
+                  Expert human evaluation of LLM outputs across multiple quality dimensions. We assess accuracy, helpfulness, coherence, safety, and user satisfaction to provide comprehensive performance feedback.
+                </p>
+                <p className="text-muted-foreground text-lg">
+                  Our rating frameworks use detailed rubrics and multiple evaluators to ensure reliable, consistent assessments. Ratings inform model improvement and guide deployment decisions.
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-indigo-400" />
+                    Multi-Dimensional Scoring
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Evaluation across multiple quality dimensions including accuracy, relevance, fluency, and completeness. Provides nuanced understanding of model strengths and weaknesses.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-indigo-400" />
+                    Comparative Evaluation
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Side-by-side comparison of responses from different models or model versions. Identifies which approaches work best for specific query types.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-indigo-400" />
+                    Hallucination Detection
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Identification of factually incorrect or fabricated information in model outputs. Critical for applications requiring high accuracy and trustworthiness.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-indigo-400" />
+                    User Intent Alignment
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Assessment of how well responses address user intent and information needs. Goes beyond surface-level relevance to evaluate true helpfulness.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-indigo-400" />
+                    Style and Tone Evaluation
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Judging appropriateness of response style, tone, and formality for different contexts. Ensures outputs match desired communication style.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-indigo-400" />
+                    Detailed Feedback Collection
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Qualitative feedback explaining ratings and identifying specific issues or strengths. Provides actionable insights for model improvement beyond numeric scores.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </section>
 
         {/* CTA Section */}
         <section className="relative py-24">
           <div className="absolute inset-0 bg-gradient-to-b from-black via-cyan-950/10 to-black" />
-          
+
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}

@@ -49,7 +49,7 @@ export default function HumanInTheLoopPage() {
                 <Users className="w-4 h-4 text-fuchsia-400" />
                 <span className="text-sm text-fuchsia-300">AI Data Services</span>
               </div>
-              
+
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
                 Human-in-the-Loop Services
                 <br />
@@ -57,7 +57,7 @@ export default function HumanInTheLoopPage() {
                   for Enhanced AI Accuracy
                 </span>
               </h1>
-              
+
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
                 Expert human oversight to enhance AI accuracy and reliability. We provide continuous quality assurance, model evaluation, and feedback loops that keep your AI systems performing optimally.
               </p>
@@ -358,13 +358,253 @@ export default function HumanInTheLoopPage() {
                 </div>
               </div>
             </motion.div>
+
+            {/* Feedback Collection Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mb-24"
+            >
+              <div className="mb-8">
+                <div className="flex items-center justify-center gap-4 mb-6">
+                  <div className="p-3 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600">
+                    <AlertTriangle className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-3xl font-bold text-white">Feedback Collection</h3>
+                </div>
+                <p className="text-muted-foreground text-lg mb-4">
+                  Specialized analysis of unusual, rare, or challenging scenarios that models struggle with. Edge cases often reveal important model limitations and provide valuable training data for improvement.
+                </p>
+                <p className="text-muted-foreground text-lg">
+                  Our edge case review process systematically identifies difficult inputs, analyzes model failures, and develops strategies to handle these scenarios. Essential for building robust, production-ready AI systems.
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-violet-400" />
+                    Failure Mode Identification
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Systematic discovery and documentation of scenarios where models fail or underperform. Creates comprehensive failure taxonomies for targeted improvement.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-violet-400" />
+                    Rare Event Handling
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Special attention to uncommon but important scenarios that occur infrequently in training data. Ensures models handle outliers gracefully.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-violet-400" />
+                    Ambiguous Input Analysis
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Expert review of ambiguous, unclear, or multi-interpretable inputs. Develops strategies for handling uncertainty and requesting clarification when needed.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-violet-400" />
+                    Adversarial Example Detection
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Identifying inputs specifically designed to fool or exploit models. Critical for security-sensitive applications and robustness improvement.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-violet-400" />
+                    Domain Shift Monitoring
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Tracking performance when input distributions shift from training data. Early detection of when models need retraining or adaptation.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-violet-400" />
+                    Improvement Recommendations
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Actionable recommendations for handling identified edge cases through model updates, additional training data, or architectural changes.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Error Analysis Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mb-24"
+            >
+              <div className="mb-8">
+                <div className="flex items-center justify-center gap-4 mb-6">
+                  <div className="p-3 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600">
+                    <AlertTriangle className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-3xl font-bold text-white">Error Analysis</h3>
+                </div>
+                <p className="text-muted-foreground text-lg mb-4">
+                  Specialized analysis of unusual, rare, or challenging scenarios that models struggle with. Edge cases often reveal important model limitations and provide valuable training data for improvement.
+                </p>
+                <p className="text-muted-foreground text-lg">
+                  Our edge case review process systematically identifies difficult inputs, analyzes model failures, and develops strategies to handle these scenarios. Essential for building robust, production-ready AI systems.
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-violet-400" />
+                    Failure Mode Identification
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Systematic discovery and documentation of scenarios where models fail or underperform. Creates comprehensive failure taxonomies for targeted improvement.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-violet-400" />
+                    Rare Event Handling
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Special attention to uncommon but important scenarios that occur infrequently in training data. Ensures models handle outliers gracefully.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-violet-400" />
+                    Ambiguous Input Analysis
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Expert review of ambiguous, unclear, or multi-interpretable inputs. Develops strategies for handling uncertainty and requesting clarification when needed.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-violet-400" />
+                    Adversarial Example Detection
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Identifying inputs specifically designed to fool or exploit models. Critical for security-sensitive applications and robustness improvement.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-violet-400" />
+                    Domain Shift Monitoring
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Tracking performance when input distributions shift from training data. Early detection of when models need retraining or adaptation.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-violet-400" />
+                    Improvement Recommendations
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Actionable recommendations for handling identified edge cases through model updates, additional training data, or architectural changes.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Continuous Improvement Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mb-24"
+            >
+              <div className="mb-8">
+                <div className="flex items-center justify-center gap-4 mb-6">
+                  <div className="p-3 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600">
+                    <AlertTriangle className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-3xl font-bold text-white">Continuous Improvement</h3>
+                </div>
+                <p className="text-muted-foreground text-lg mb-4">
+                  Specialized analysis of unusual, rare, or challenging scenarios that models struggle with. Edge cases often reveal important model limitations and provide valuable training data for improvement.
+                </p>
+                <p className="text-muted-foreground text-lg">
+                  Our edge case review process systematically identifies difficult inputs, analyzes model failures, and develops strategies to handle these scenarios. Essential for building robust, production-ready AI systems.
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-violet-400" />
+                    Failure Mode Identification
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Systematic discovery and documentation of scenarios where models fail or underperform. Creates comprehensive failure taxonomies for targeted improvement.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-violet-400" />
+                    Rare Event Handling
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Special attention to uncommon but important scenarios that occur infrequently in training data. Ensures models handle outliers gracefully.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-violet-400" />
+                    Ambiguous Input Analysis
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Expert review of ambiguous, unclear, or multi-interpretable inputs. Develops strategies for handling uncertainty and requesting clarification when needed.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-violet-400" />
+                    Adversarial Example Detection
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Identifying inputs specifically designed to fool or exploit models. Critical for security-sensitive applications and robustness improvement.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-violet-400" />
+                    Domain Shift Monitoring
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Tracking performance when input distributions shift from training data. Early detection of when models need retraining or adaptation.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-violet-400" />
+                    Improvement Recommendations
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Actionable recommendations for handling identified edge cases through model updates, additional training data, or architectural changes.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </section>
 
         {/* CTA Section */}
         <section className="relative py-24">
           <div className="absolute inset-0 bg-gradient-to-b from-black via-fuchsia-950/10 to-black" />
-          
+
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}

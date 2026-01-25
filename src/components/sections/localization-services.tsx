@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 import {
   Globe2,
   Languages,
@@ -14,6 +15,7 @@ import {
   MessageSquare,
   BookOpen,
   Smartphone,
+  ArrowRight,
 } from "lucide-react";
 
 const localizationServices = [
@@ -22,6 +24,7 @@ const localizationServices = [
     icon: Languages,
     color: "from-orange-500 to-amber-500",
     description: "Professional translation across 100+ languages",
+    href: "/services/translation",
     subServices: [
       "Document Localization",
       "Website Localization",
@@ -36,6 +39,7 @@ const localizationServices = [
     icon: FileText,
     color: "from-pink-500 to-rose-500",
     description: "Accurate transcription for all media types",
+    href: "/services/transcription",
     subServices: [
       "Audio Transcription",
       "Video Transcription",
@@ -50,6 +54,7 @@ const localizationServices = [
     icon: Subtitles,
     color: "from-blue-500 to-cyan-500",
     description: "Professional subtitles for global audiences",
+    href: "/services/subtitling",
     subServices: [
       "Closed Captions",
       "Multilingual Subtitles",
@@ -64,6 +69,7 @@ const localizationServices = [
     icon: Mic,
     color: "from-purple-500 to-violet-500",
     description: "Native voice talent for authentic audio",
+    href: "/services/voiceover",
     subServices: [
       "Dubbing",
       "Narration Recording",
@@ -78,6 +84,7 @@ const localizationServices = [
     icon: CheckCircle,
     color: "from-emerald-500 to-teal-500",
     description: "Quality assurance for linguistic accuracy",
+    href: "/services/linguistic-qa",
     subServices: [
       "Proofreading",
       "Localization Testing",
@@ -162,50 +169,53 @@ export function LocalizationServices() {
                   "md:col-span-2 lg:col-span-1"
               )}
             >
-              <div className="relative h-full p-6 rounded-2xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border hover:border-orange-500/30 transition-all duration-300">
-                {/* Glow */}
-                <div
-                  className={cn(
-                    "absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500",
-                    `bg-gradient-to-r ${service.color}`
-                  )}
-                  style={{
-                    transform: "scale(0.9)",
-                    filter: "blur(40px)",
-                    zIndex: -1,
-                  }}
-                />
+              <Link href={service.href} className="block h-full">
+                <div className="relative h-full p-6 rounded-2xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border hover:border-orange-500/30 transition-all duration-300 cursor-pointer">
+                  {/* Glow */}
+                  <div
+                    className={cn(
+                      "absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500",
+                      `bg-gradient-to-r ${service.color}`
+                    )}
+                    style={{
+                      transform: "scale(0.9)",
+                      filter: "blur(40px)",
+                      zIndex: -1,
+                    }}
+                  />
 
-                {/* Icon */}
-                <div
-                  className={cn(
-                    "w-12 h-12 rounded-xl flex items-center justify-center mb-4",
-                    `bg-gradient-to-r ${service.color}`
-                  )}
-                >
-                  <service.icon className="w-6 h-6 text-white" />
+                  {/* Icon */}
+                  <div
+                    className={cn(
+                      "w-12 h-12 rounded-xl flex items-center justify-center mb-4",
+                      `bg-gradient-to-r ${service.color}`
+                    )}
+                  >
+                    <service.icon className="w-6 h-6 text-white" />
+                  </div>
+
+                  {/* Content */}
+                  <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-orange-300 transition-colors flex items-center justify-between">
+                    {service.title}
+                    <ArrowRight className="w-5 h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" />
+                  </h3>
+                  <p className="text-muted-foreground text-sm mb-4">
+                    {service.description}
+                  </p>
+
+                  {/* Sub-services */}
+                  <div className="flex flex-wrap gap-2">
+                    {service.subServices.map((sub) => (
+                      <span
+                        key={sub}
+                        className="px-2 py-1 text-xs rounded-md bg-white/5 text-muted-foreground"
+                      >
+                        {sub}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-
-                {/* Content */}
-                <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-orange-300 transition-colors">
-                  {service.title}
-                </h3>
-                <p className="text-muted-foreground text-sm mb-4">
-                  {service.description}
-                </p>
-
-                {/* Sub-services */}
-                <div className="flex flex-wrap gap-2">
-                  {service.subServices.map((sub) => (
-                    <span
-                      key={sub}
-                      className="px-2 py-1 text-xs rounded-md bg-white/5 text-muted-foreground"
-                    >
-                      {sub}
-                    </span>
-                  ))}
-                </div>
-              </div>
+              </Link>
             </motion.div>
           ))}
         </div>

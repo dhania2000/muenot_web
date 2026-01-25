@@ -49,7 +49,7 @@ export default function DataCurationPage() {
                 <Database className="w-4 h-4 text-indigo-400" />
                 <span className="text-sm text-indigo-300">AI Data Services</span>
               </div>
-              
+
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
                 Data Curation Services
                 <br />
@@ -57,7 +57,7 @@ export default function DataCurationPage() {
                   for High-Quality AI Datasets
                 </span>
               </h1>
-              
+
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
                 Transform raw data into clean, structured, and validated datasets. Our expert curation services ensure optimal data quality for superior AI model performance and reliability.
               </p>
@@ -358,13 +358,253 @@ export default function DataCurationPage() {
                 </div>
               </div>
             </motion.div>
+
+            {/* Bias Review Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mb-24"
+            >
+              <div className="mb-8">
+                <div className="flex items-center justify-center gap-4 mb-6">
+                  <div className="p-3 rounded-xl bg-gradient-to-r from-purple-600 to-fuchsia-600">
+                    <Shield className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-3xl font-bold text-white">Bias Review</h3>
+                </div>
+                <p className="text-muted-foreground text-lg mb-4">
+                  Our data validation services ensure accuracy and integrity through rigorous validation processes. We implement comprehensive checks to verify data quality, consistency, and compliance with your specifications before it enters your ML pipeline.
+                </p>
+                <p className="text-muted-foreground text-lg">
+                  Using automated validation rules combined with expert human review, we catch errors early and ensure your datasets meet the highest quality standards for reliable model training.
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-purple-400" />
+                    Schema Validation
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Verify data conforms to defined schemas with type checking, constraint validation, and relationship integrity. Ensures structural consistency across your entire dataset.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-purple-400" />
+                    Business Rule Validation
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Apply domain-specific validation rules to ensure data makes logical sense. Includes range checks, cross-field validation, and custom business logic enforcement.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-purple-400" />
+                    Statistical Validation
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Analyze data distributions, detect statistical anomalies, and verify expected patterns. Includes correlation analysis, distribution testing, and outlier significance assessment.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-purple-400" />
+                    Completeness Checks
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Ensure all required fields are present and properly populated. Track missing data patterns and verify minimum data requirements are met for model training.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-purple-400" />
+                    Consistency Verification
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Check for internal consistency across related fields and records. Validates temporal consistency, referential integrity, and logical relationships within your data.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-purple-400" />
+                    Quality Metrics Reporting
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Comprehensive quality reports with detailed metrics on completeness, accuracy, consistency, and timeliness. Includes visual dashboards and actionable insights for data improvement.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Metadata Enrichment Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mb-24"
+            >
+              <div className="mb-8">
+                <div className="flex items-center justify-center gap-4 mb-6">
+                  <div className="p-3 rounded-xl bg-gradient-to-r from-purple-600 to-fuchsia-600">
+                    <Shield className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-3xl font-bold text-white">Metadata Enrichment</h3>
+                </div>
+                <p className="text-muted-foreground text-lg mb-4">
+                  Our data validation services ensure accuracy and integrity through rigorous validation processes. We implement comprehensive checks to verify data quality, consistency, and compliance with your specifications before it enters your ML pipeline.
+                </p>
+                <p className="text-muted-foreground text-lg">
+                  Using automated validation rules combined with expert human review, we catch errors early and ensure your datasets meet the highest quality standards for reliable model training.
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-purple-400" />
+                    Schema Validation
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Verify data conforms to defined schemas with type checking, constraint validation, and relationship integrity. Ensures structural consistency across your entire dataset.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-purple-400" />
+                    Business Rule Validation
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Apply domain-specific validation rules to ensure data makes logical sense. Includes range checks, cross-field validation, and custom business logic enforcement.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-purple-400" />
+                    Statistical Validation
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Analyze data distributions, detect statistical anomalies, and verify expected patterns. Includes correlation analysis, distribution testing, and outlier significance assessment.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-purple-400" />
+                    Completeness Checks
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Ensure all required fields are present and properly populated. Track missing data patterns and verify minimum data requirements are met for model training.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-purple-400" />
+                    Consistency Verification
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Check for internal consistency across related fields and records. Validates temporal consistency, referential integrity, and logical relationships within your data.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-purple-400" />
+                    Quality Metrics Reporting
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Comprehensive quality reports with detailed metrics on completeness, accuracy, consistency, and timeliness. Includes visual dashboards and actionable insights for data improvement.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Quality Scoring Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mb-24"
+            >
+              <div className="mb-8">
+                <div className="flex items-center justify-center gap-4 mb-6">
+                  <div className="p-3 rounded-xl bg-gradient-to-r from-purple-600 to-fuchsia-600">
+                    <Shield className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-3xl font-bold text-white">Quality Scoring</h3>
+                </div>
+                <p className="text-muted-foreground text-lg mb-4">
+                  Our data validation services ensure accuracy and integrity through rigorous validation processes. We implement comprehensive checks to verify data quality, consistency, and compliance with your specifications before it enters your ML pipeline.
+                </p>
+                <p className="text-muted-foreground text-lg">
+                  Using automated validation rules combined with expert human review, we catch errors early and ensure your datasets meet the highest quality standards for reliable model training.
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-purple-400" />
+                    Schema Validation
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Verify data conforms to defined schemas with type checking, constraint validation, and relationship integrity. Ensures structural consistency across your entire dataset.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-purple-400" />
+                    Business Rule Validation
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Apply domain-specific validation rules to ensure data makes logical sense. Includes range checks, cross-field validation, and custom business logic enforcement.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-purple-400" />
+                    Statistical Validation
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Analyze data distributions, detect statistical anomalies, and verify expected patterns. Includes correlation analysis, distribution testing, and outlier significance assessment.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-purple-400" />
+                    Completeness Checks
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Ensure all required fields are present and properly populated. Track missing data patterns and verify minimum data requirements are met for model training.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-purple-400" />
+                    Consistency Verification
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Check for internal consistency across related fields and records. Validates temporal consistency, referential integrity, and logical relationships within your data.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-purple-400" />
+                    Quality Metrics Reporting
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Comprehensive quality reports with detailed metrics on completeness, accuracy, consistency, and timeliness. Includes visual dashboards and actionable insights for data improvement.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </section>
 
         {/* CTA Section */}
         <section className="relative py-24">
           <div className="absolute inset-0 bg-gradient-to-b from-black via-indigo-950/10 to-black" />
-          
+
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}

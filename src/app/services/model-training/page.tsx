@@ -49,7 +49,7 @@ export default function ModelTrainingPage() {
                 <Cpu className="w-4 h-4 text-purple-400" />
                 <span className="text-sm text-purple-300">AI Data Services</span>
               </div>
-              
+
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
                 Model Training Support
                 <br />
@@ -57,7 +57,7 @@ export default function ModelTrainingPage() {
                   for Superior AI Performance
                 </span>
               </h1>
-              
+
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
                 Comprehensive training data and human feedback services to power your AI models. We deliver high-quality datasets, RLHF support, and evaluation frameworks for optimal model performance.
               </p>
@@ -279,6 +279,246 @@ export default function ModelTrainingPage() {
               </div>
             </motion.div>
 
+            {/* Instruction Data Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mb-24"
+            >
+              <div className="mb-8">
+                <div className="flex items-center justify-center gap-4 mb-6">
+                  <div className="p-3 rounded-xl bg-gradient-to-r from-pink-600 to-rose-600">
+                    <Users className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-3xl font-bold text-white">Instruction Data</h3>
+                </div>
+                <p className="text-muted-foreground text-lg mb-4">
+                  Reinforcement Learning from Human Feedback (RLHF) services that align AI models with human preferences and values. We provide expert human evaluators who assess model outputs, rank responses, and provide detailed feedback to guide model improvement.
+                </p>
+                <p className="text-muted-foreground text-lg">
+                  Our RLHF infrastructure supports iterative training cycles, preference modeling, and policy optimization to create AI systems that are helpful, harmless, and honest. Perfect for fine-tuning large language models and dialogue systems.
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-pink-400" />
+                    Preference Data Collection
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Systematic collection of human preferences between model outputs. Expert evaluators compare responses and indicate which better satisfies quality, safety, and helpfulness criteria.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-pink-400" />
+                    Reward Modeling
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Training reward models that predict human preferences from collected feedback data. These models guide reinforcement learning to optimize for desired behaviors.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-pink-400" />
+                    Comparison and Ranking Tasks
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Structured tasks where evaluators compare and rank multiple model outputs. Supports pairwise comparisons and multi-way rankings for nuanced preference capture.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-pink-400" />
+                    Safety and Alignment Feedback
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Specialized feedback focused on model safety, ethical behavior, and value alignment. Identifies harmful, biased, or inappropriate outputs for correction.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-pink-400" />
+                    Iterative Refinement Cycles
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Multi-stage RLHF implementation with feedback loops that progressively improve model alignment. Fresh preference data at each stage ensures continuous refinement.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-pink-400" />
+                    Expert Evaluator Networks
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Access to domain experts and specialists who provide high-quality feedback. Ensures RLHF data reflects real expertise and professional standards.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Synthetic Data Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mb-24"
+            >
+              <div className="mb-8">
+                <div className="flex items-center justify-center gap-4 mb-6">
+                  <div className="p-3 rounded-xl bg-gradient-to-r from-pink-600 to-rose-600">
+                    <Users className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-3xl font-bold text-white">Synthetic Data</h3>
+                </div>
+                <p className="text-muted-foreground text-lg mb-4">
+                  Reinforcement Learning from Human Feedback (RLHF) services that align AI models with human preferences and values. We provide expert human evaluators who assess model outputs, rank responses, and provide detailed feedback to guide model improvement.
+                </p>
+                <p className="text-muted-foreground text-lg">
+                  Our RLHF infrastructure supports iterative training cycles, preference modeling, and policy optimization to create AI systems that are helpful, harmless, and honest. Perfect for fine-tuning large language models and dialogue systems.
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-pink-400" />
+                    Preference Data Collection
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Systematic collection of human preferences between model outputs. Expert evaluators compare responses and indicate which better satisfies quality, safety, and helpfulness criteria.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-pink-400" />
+                    Reward Modeling
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Training reward models that predict human preferences from collected feedback data. These models guide reinforcement learning to optimize for desired behaviors.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-pink-400" />
+                    Comparison and Ranking Tasks
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Structured tasks where evaluators compare and rank multiple model outputs. Supports pairwise comparisons and multi-way rankings for nuanced preference capture.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-pink-400" />
+                    Safety and Alignment Feedback
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Specialized feedback focused on model safety, ethical behavior, and value alignment. Identifies harmful, biased, or inappropriate outputs for correction.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-pink-400" />
+                    Iterative Refinement Cycles
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Multi-stage RLHF implementation with feedback loops that progressively improve model alignment. Fresh preference data at each stage ensures continuous refinement.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-pink-400" />
+                    Expert Evaluator Networks
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Access to domain experts and specialists who provide high-quality feedback. Ensures RLHF data reflects real expertise and professional standards.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Prompt Data Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mb-24"
+            >
+              <div className="mb-8">
+                <div className="flex items-center justify-center gap-4 mb-6">
+                  <div className="p-3 rounded-xl bg-gradient-to-r from-pink-600 to-rose-600">
+                    <Users className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-3xl font-bold text-white">Prompt Data</h3>
+                </div>
+                <p className="text-muted-foreground text-lg mb-4">
+                  Reinforcement Learning from Human Feedback (RLHF) services that align AI models with human preferences and values. We provide expert human evaluators who assess model outputs, rank responses, and provide detailed feedback to guide model improvement.
+                </p>
+                <p className="text-muted-foreground text-lg">
+                  Our RLHF infrastructure supports iterative training cycles, preference modeling, and policy optimization to create AI systems that are helpful, harmless, and honest. Perfect for fine-tuning large language models and dialogue systems.
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-pink-400" />
+                    Preference Data Collection
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Systematic collection of human preferences between model outputs. Expert evaluators compare responses and indicate which better satisfies quality, safety, and helpfulness criteria.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-pink-400" />
+                    Reward Modeling
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Training reward models that predict human preferences from collected feedback data. These models guide reinforcement learning to optimize for desired behaviors.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-pink-400" />
+                    Comparison and Ranking Tasks
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Structured tasks where evaluators compare and rank multiple model outputs. Supports pairwise comparisons and multi-way rankings for nuanced preference capture.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-pink-400" />
+                    Safety and Alignment Feedback
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Specialized feedback focused on model safety, ethical behavior, and value alignment. Identifies harmful, biased, or inappropriate outputs for correction.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-pink-400" />
+                    Iterative Refinement Cycles
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Multi-stage RLHF implementation with feedback loops that progressively improve model alignment. Fresh preference data at each stage ensures continuous refinement.
+                  </p>
+                </div>
+                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
+                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-pink-400" />
+                    Expert Evaluator Networks
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Access to domain experts and specialists who provide high-quality feedback. Ensures RLHF data reflects real expertise and professional standards.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
             {/* Evaluation Sets Section */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -364,7 +604,7 @@ export default function ModelTrainingPage() {
         {/* CTA Section */}
         <section className="relative py-24">
           <div className="absolute inset-0 bg-gradient-to-b from-black via-purple-950/10 to-black" />
-          
+
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}

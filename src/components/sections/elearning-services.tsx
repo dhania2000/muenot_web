@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 import {
   GraduationCap,
   BookOpen,
@@ -15,6 +16,7 @@ import {
   Users,
   Settings,
   Sparkles,
+  ArrowRight,
 } from "lucide-react";
 
 const elearningCategories = [
@@ -24,6 +26,7 @@ const elearningCategories = [
       "Create engaging digital learning content across multiple formats",
     icon: PenTool,
     gradient: "from-blue-500 to-cyan-500",
+    href: "/services/content-development",
     services: [
       "Alt Text Creation",
       "Animation Design",
@@ -38,6 +41,7 @@ const elearningCategories = [
     description: "Professional production services for educational materials",
     icon: Layout,
     gradient: "from-purple-500 to-pink-500",
+    href: "/services/content-production",
     services: [
       "Cover Design",
       "Quality Control",
@@ -52,6 +56,7 @@ const elearningCategories = [
     description: "Streamlined operations for content management and delivery",
     icon: Settings,
     gradient: "from-emerald-500 to-teal-500",
+    href: "/services/content-operations",
     services: [
       "Testing & QA",
       "Indexing",
@@ -66,6 +71,7 @@ const elearningCategories = [
     description: "Visual design and art creation for learning materials",
     icon: Palette,
     gradient: "from-orange-500 to-amber-500",
+    href: "/services/art-production",
     services: [
       "Illustration",
       "Infographics",
@@ -80,6 +86,7 @@ const elearningCategories = [
     description: "Multimedia production for immersive learning experiences",
     icon: Video,
     gradient: "from-red-500 to-rose-500",
+    href: "/services/video-audio",
     services: [
       "Video Editing",
       "Video Creation",
@@ -94,6 +101,7 @@ const elearningCategories = [
     description: "Dedicated support for educators and course creators",
     icon: Users,
     gradient: "from-indigo-500 to-violet-500",
+    href: "/services/faculty-support",
     services: [
       "Course Setup",
       "LMS Integration",
@@ -148,51 +156,54 @@ export function ElearningServices() {
               transition={{ delay: index * 0.1 }}
               className="group"
             >
-              <div className="relative h-full p-6 rounded-2xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border hover:border-blue-500/30 transition-all duration-300">
-                {/* Glow Effect */}
-                <div
-                  className={cn(
-                    "absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500",
-                    `bg-gradient-to-r ${category.gradient}`
-                  )}
-                  style={{
-                    transform: "scale(0.9)",
-                    filter: "blur(40px)",
-                    zIndex: -1,
-                  }}
-                />
+              <Link href={category.href} className="block h-full">
+                <div className="relative h-full p-6 rounded-2xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border hover:border-blue-500/30 transition-all duration-300 cursor-pointer">
+                  {/* Glow Effect */}
+                  <div
+                    className={cn(
+                      "absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500",
+                      `bg-gradient-to-r ${category.gradient}`
+                    )}
+                    style={{
+                      transform: "scale(0.9)",
+                      filter: "blur(40px)",
+                      zIndex: -1,
+                    }}
+                  />
 
-                {/* Icon */}
-                <div
-                  className={cn(
-                    "w-12 h-12 rounded-xl flex items-center justify-center mb-4",
-                    `bg-gradient-to-r ${category.gradient}`
-                  )}
-                >
-                  <category.icon className="w-6 h-6 text-white" />
+                  {/* Icon */}
+                  <div
+                    className={cn(
+                      "w-12 h-12 rounded-xl flex items-center justify-center mb-4",
+                      `bg-gradient-to-r ${category.gradient}`
+                    )}
+                  >
+                    <category.icon className="w-6 h-6 text-white" />
+                  </div>
+
+                  {/* Content */}
+                  <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-blue-300 transition-colors flex items-center justify-between">
+                    {category.title}
+                    <ArrowRight className="w-5 h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" />
+                  </h3>
+                  <p className="text-muted-foreground text-sm mb-4">
+                    {category.description}
+                  </p>
+
+                  {/* Services List */}
+                  <ul className="space-y-2">
+                    {category.services.map((service) => (
+                      <li
+                        key={service}
+                        className="flex items-center gap-2 text-sm text-muted-foreground"
+                      >
+                        <CheckSquare className="w-4 h-4 text-blue-400/60" />
+                        {service}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-
-                {/* Content */}
-                <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-blue-300 transition-colors">
-                  {category.title}
-                </h3>
-                <p className="text-muted-foreground text-sm mb-4">
-                  {category.description}
-                </p>
-
-                {/* Services List */}
-                <ul className="space-y-2">
-                  {category.services.map((service) => (
-                    <li
-                      key={service}
-                      className="flex items-center gap-2 text-sm text-muted-foreground"
-                    >
-                      <CheckSquare className="w-4 h-4 text-blue-400/60" />
-                      {service}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              </Link>
             </motion.div>
           ))}
         </div>
