@@ -53,22 +53,22 @@ const values = [
 
 const stats = [
   {
-    number: "500+",
+    number: "50+",
     label: "Global Clients",
     icon: Users
   },
   {
-    number: "50+",
+    number: "10+",
     label: "Countries Served",
     icon: Globe
   },
   {
-    number: "1M+",
+    number: "100+",
     label: "Projects Delivered",
     icon: CheckCircle
   },
   {
-    number: "15+",
+    number: "7+",
     label: "Years of Experience",
     icon: Building2
   },
