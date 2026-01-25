@@ -29,7 +29,7 @@ const aboutLinks = [
   { name: "About Us", href: "/#about" },
   { name: "Contact Us", href: "/contact" },
   { name: "Our Services", href: "/#services" },
-  { name: "Our Clients", href: "/#about" },
+  { name: "Our Clients", href: "/#our-clients" },
 ];
 
 const servicesLinks = [
