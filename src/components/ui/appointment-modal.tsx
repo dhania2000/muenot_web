@@ -49,7 +49,7 @@ export function AppointmentModal({
 
           {/* Modal */}
           <div 
-            className="fixed inset-0 z-[9999] flex items-center justify-center p-2 sm:p-4 overflow-y-auto overflow-x-hidden"
+            className="fixed inset-0 z-[9999] flex items-center justify-center p-2 sm:p-4 overflow-hidden"
             style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}
           >
             <motion.div
@@ -58,9 +58,10 @@ export function AppointmentModal({
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: "spring", duration: 0.5 }}
               className={cn(
-                "relative w-full max-w-5xl my-2 sm:my-8 overflow-hidden",
+                "relative w-full max-w-5xl overflow-hidden flex flex-col",
                 "bg-gradient-to-b from-slate-900 via-slate-900/95 to-slate-950",
-                "border border-violet-500/20 rounded-xl sm:rounded-2xl shadow-2xl"
+                "border border-violet-500/20 rounded-xl sm:rounded-2xl shadow-2xl",
+                "h-[95vh] sm:h-[90vh]"
               )}
             >
               {/* Decorative gradient orbs */}
@@ -68,7 +69,7 @@ export function AppointmentModal({
               <div className="absolute bottom-0 right-0 w-32 sm:w-48 md:w-72 h-32 sm:h-48 md:h-72 bg-indigo-500/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
 
               {/* Header */}
-              <div className="relative z-10 flex items-center justify-between p-3 sm:p-4 md:p-6 border-b border-violet-500/10">
+              <div className="relative z-10 flex items-center justify-between p-3 sm:p-4 border-b border-violet-500/10 flex-shrink-0">
                 <div className="flex-1 min-w-0 pr-2">
                   <h2 className="text-base sm:text-xl md:text-2xl font-bold text-white truncate">
                     Schedule Appointment
@@ -91,13 +92,10 @@ export function AppointmentModal({
               </div>
 
               {/* Content - Google Calendar iframe */}
-              <div className="relative z-10 p-2 sm:p-4 md:p-6 overflow-hidden">
+              <div className="relative z-10 p-2 sm:p-4 overflow-hidden flex-1 flex flex-col">
                 <div 
-                  className="relative overflow-hidden rounded-lg sm:rounded-xl border border-violet-500/20 bg-slate-950 shadow-2xl w-full" 
+                  className="relative overflow-hidden rounded-lg sm:rounded-xl border border-violet-500/20 bg-slate-950 shadow-2xl w-full h-full" 
                   style={{ 
-                    height: "calc(85vh - 80px)",
-                    minHeight: "400px",
-                    maxHeight: "700px",
                     boxShadow: "inset 0 0 60px rgba(139, 92, 246, 0.1)"
                   }}
                 >
@@ -106,12 +104,6 @@ export function AppointmentModal({
                       border: 0;
                       filter: invert(0.92) hue-rotate(180deg) brightness(1.15) contrast(0.95) saturate(1.2);
                       color-scheme: dark;
-                    }
-                    @media (max-width: 640px) {
-                      iframe {
-                        transform: scale(0.95);
-                        transform-origin: top left;
-                      }
                     }
                   `}</style>
                   <iframe
