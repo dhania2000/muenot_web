@@ -353,7 +353,7 @@ export default function AboutPage() {
                   Get In Touch
                 </a>
                 <a
-                  href="/components/sections/#services-overview"
+                  href="/contact"
                   className="px-8 py-4 border border-violet-500/30 hover:bg-violet-500/10 text-white font-semibold rounded-xl transition-all duration-300"
                 >
                   Explore Services
