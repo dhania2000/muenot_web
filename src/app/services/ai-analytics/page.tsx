@@ -1,12 +1,183 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { BarChart3, CheckCircle, ArrowRight, Sparkles, ArrowLeft, TrendingUp, LineChart, PieChart, Activity, Target, AlertCircle } from "lucide-react";
+import {  BarChart3,  ArrowLeft,  ArrowRight, TrendingUp, PieChart, CheckCircle2, Target, AlertCircle, Activity, LineChart, Users, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { SparklesCore } from "@/components/ui/sparkles";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+
+const analyticsServices = [
+  {
+    title: "Performance Metrics",
+    icon: TrendingUp,
+    color: "blue",
+    gradient: "from-blue-600 to-cyan-600",
+    description: "Comprehensive tracking of model performance metrics across accuracy, latency, throughput, and resource utilization",
+    coverage: {
+      "Accuracy Tracking": "Continuous monitoring of model accuracy and F1 scores",
+      "Latency Monitoring": "Real-time tracking of inference speed",
+      "Resource Analysis": "Monitoring compute, memory, and storage usage",
+      "Business Metrics": "Tracking AI impact on business outcomes",
+      "Comparative Analysis": "Side-by-side model version comparison",
+      "Custom Metrics": "Domain-specific metric tracking"
+    },
+    deliverables: [
+      "Real-time dashboards",
+      "Automated performance reports",
+      "Historical trend analysis",
+      "Optimization recommendations"
+    ],
+    standards: ["SLA Compliance", "Industry Benchmarks", "Custom KPIs"],
+    use: "Production AI systems, model monitoring, performance optimization"
+  },
+  {
+    title: "Quality Reports",
+    icon: PieChart,
+    color: "cyan",
+    gradient: "from-cyan-600 to-teal-600",
+    description: "Detailed quality assessment reports providing comprehensive analysis of model outputs and system reliability",
+    coverage: {
+      "Output Analysis": "In-depth assessment of model output quality",
+      "Data Quality": "Evaluation of training and inference data",
+      "Fairness Reports": "Model fairness across demographic groups",
+      "Incident Analysis": "Post-mortem analysis of model failures",
+      "Compliance Docs": "Regulatory compliance documentation",
+      "Improvement Plans": "Prioritized improvement recommendations"
+    },
+    deliverables: [
+      "Executive summaries",
+      "Technical deep-dives",
+      "Compliance certificates",
+      "Action item roadmaps"
+    ],
+    standards: ["ISO Standards", "GDPR Compliance", "Industry Regulations"],
+    use: "Stakeholder reporting, compliance audits, improvement planning"
+  },
+  {
+    title: "Trend Analysis",
+    icon: LineChart,
+    color: "purple",
+    gradient: "from-purple-600 to-violet-600",
+    description: "Long-term trend analysis and pattern recognition for proactive model management and optimization",
+    coverage: {
+      "Historical Trends": "Long-term performance pattern analysis",
+      "Seasonal Patterns": "Cyclical variation identification",
+      "Growth Projections": "Future performance forecasting",
+      "Anomaly Detection": "Unusual pattern identification",
+      "Benchmark Tracking": "Industry comparison over time",
+      "Impact Analysis": "Change impact measurement"
+    },
+    deliverables: [
+      "Trend visualization reports",
+      "Predictive analytics",
+      "Anomaly alerts",
+      "Strategic recommendations"
+    ],
+    standards: ["Statistical Methods", "ML-based Analysis", "Time Series"],
+    use: "Strategic planning, capacity planning, predictive maintenance"
+  },
+  {
+    title: "ROI Tracking",
+    icon: Target,
+    color: "indigo",
+    gradient: "from-indigo-600 to-purple-600",
+    description: "Measure and demonstrate the business value of your AI investments with comprehensive ROI analytics",
+    coverage: {
+      "Cost Analysis": "Total cost of ownership tracking",
+      "Value Measurement": "Business value quantification",
+      "Efficiency Gains": "Productivity improvement metrics",
+      "Revenue Impact": "Revenue attribution analysis",
+      "Savings Tracking": "Cost reduction measurement",
+      "Investment Planning": "Future investment optimization"
+    },
+    deliverables: [
+      "ROI calculation reports",
+      "Business case documentation",
+      "Investment recommendations",
+      "Value realization tracking"
+    ],
+    standards: ["Financial Metrics", "Business KPIs", "Value Frameworks"],
+    use: "Executive reporting, budget planning, investment decisions"
+  },
+  {
+    title: "Model Comparison",
+    icon: Activity,
+    color: "emerald",
+    gradient: "from-emerald-600 to-teal-600",
+    description: "Compare model performance across versions, configurations, and alternatives for data-driven decisions",
+    coverage: {
+      "Version Comparison": "Side-by-side version analysis",
+      "A/B Testing": "Statistical comparison testing",
+      "Config Analysis": "Configuration impact assessment",
+      "Vendor Comparison": "Third-party model evaluation",
+      "Cost-Performance": "Efficiency comparison metrics",
+      "Feature Analysis": "Feature importance comparison"
+    },
+    deliverables: [
+      "Comparison dashboards",
+      "Statistical analysis reports",
+      "Decision matrices",
+      "Selection recommendations"
+    ],
+    standards: ["Statistical Significance", "Fair Comparison", "Benchmark Standards"],
+    use: "Model selection, version upgrades, vendor evaluation"
+  },
+  {
+    title: "Drift Detection",
+    icon: AlertCircle,
+    color: "teal",
+    gradient: "from-teal-600 to-cyan-600",
+    description: "Automated detection of data drift and model drift to maintain performance and reliability over time",
+    coverage: {
+      "Data Distribution": "Input data distribution monitoring",
+      "Concept Drift": "Relationship change detection",
+      "Performance Alerts": "Degradation threshold alerts",
+      "Temporal Patterns": "Seasonal variation analysis",
+      "Retrain Triggers": "Automated retraining recommendations",
+      "Root Cause": "Drift source identification"
+    },
+    deliverables: [
+      "Drift monitoring dashboards",
+      "Automated alert systems",
+      "Retraining schedules",
+      "Root cause analysis reports"
+    ],
+    standards: ["Statistical Tests", "ML Monitoring", "Continuous Validation"],
+    use: "Production monitoring, model maintenance, quality assurance"
+  }
+];
+
+const analyticsStats = [
+  { label: "Metrics Tracked", value: "500+", icon: Shield },
+  { label: "Accuracy Rate", value: "99.9%", icon: CheckCircle2 },
+  { label: "Clients Served", value: "200+", icon: Users },
+  { label: "Data Points/Day", value: "10M+", icon: BarChart3 }
+];
+
+const whyAnalytics = [
+  {
+    title: "Data-Driven Decisions",
+    description: "Make informed decisions based on comprehensive analytics and actionable insights",
+    icon: Shield
+  },
+  {
+    title: "Proactive Monitoring",
+    description: "Detect issues before they impact users with real-time monitoring and alerting",
+    icon: Users
+  },
+  {
+    title: "Performance Optimization",
+    description: "Continuously improve model performance with detailed metrics and recommendations",
+    icon: TrendingUp
+  },
+  {
+    title: "Business Value",
+    description: "Demonstrate and maximize the ROI of your AI investments",
+    icon: ArrowRight
+  }
+];
 
 export default function AIAnalyticsPage() {
   return (
@@ -23,86 +194,70 @@ export default function AIAnalyticsPage() {
           </Link>
         </div>
 
-        {/* Hero Section */}
+        {/* Hero Section - Split Layout */}
         <section className="relative pt-8 pb-24 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-emerald-950/20 via-black to-black" />
-          <div className="absolute inset-0">
-            <SparklesCore
-              id="analyticsSparkles"
-              background="transparent"
-              minSize={0.4}
-              maxSize={1}
-              particleDensity={20}
-              className="w-full h-full"
-              particleColor="#10b981"
-            />
-          </div>
-          <div className="absolute inset-0 bg-grid-white/[0.02] bg-[length:50px_50px]" />
-
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-950/30 via-black to-cyan-950/20" />
+          
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-center"
-            >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6">
-                <BarChart3 className="w-4 h-4 text-emerald-400" />
-                <span className="text-sm text-emerald-300">AI Data Services</span>
-              </div>
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+              >
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 mb-6">
+                  <BarChart3 className="w-4 h-4 text-blue-400" />
+                  <span className="text-sm text-blue-300">AI Data Services</span>
+                </div>
 
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-                AI Analytics Services
-                <br />
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400">
-                  for Data-Driven Insights
-                </span>
-              </h1>
+                <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+                  AI Analytics
+                  <span className="block bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 mt-2">
+                    Services
+                  </span>
+                </h1>
 
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-                Comprehensive analytics and monitoring for AI systems. Track performance, detect issues, and optimize models with actionable insights from detailed metrics and reports.
-              </p>
+                <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
+                  Comprehensive analytics and monitoring for AI systems. Track performance, detect issues, and optimize models with actionable insights from detailed metrics and reports.
+                </p>
 
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Link href="/contact">
-                  <Button size="lg" className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-8 py-6 text-lg rounded-xl group">
-                    Get Started
-                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </Link>
-                <Link href="/#ai-data">
-                  <Button size="lg" variant="outline" className="border-emerald-500/30 hover:bg-emerald-500/10 px-8 py-6 text-lg rounded-xl">
-                    View All Services
-                  </Button>
-                </Link>
-              </div>
-            </motion.div>
+                <div className="flex flex-col sm:flex-row gap-4 mb-8">
+                  <Link href="/contact">
+                    <Button size="lg" className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-8 py-6 text-lg rounded-xl group">
+                      Get Started
+                      <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </Link>
+                  <Link href="#services">
+                    <Button size="lg" className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-8 py-6 text-lg rounded-xl">
+                      View Services
+                    </Button>
+                  </Link>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.2 }}
+                className="grid grid-cols-2 gap-4"
+              >
+                {analyticsStats.map((stat, index) => (
+                  <div
+                    key={stat.label}
+                    className="p-6 rounded-xl bg-[#0d1117] border border-white/10 text-center"
+                  >
+                    <stat.icon className="w-10 h-10 text-blue-400 mx-auto mb-3" />
+                    <div className="text-3xl font-bold text-blue-400 mb-2">{stat.value}</div>
+                    <div className="text-sm text-white">{stat.label}</div>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
           </div>
         </section>
 
-        {/* Overview Section */}
-        <section className="relative py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="max-w-4xl mx-auto"
-            >
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                Why AI Analytics Matter
-              </h2>
-              <p className="text-muted-foreground text-lg mb-4">
-                You can't improve what you don't measure. AI analytics provide visibility into model performance, data quality, and system health. From tracking accuracy metrics to detecting drift and identifying optimization opportunities, analytics are essential for maintaining and improving AI systems.
-              </p>
-              <p className="text-muted-foreground text-lg">
-                Our AI analytics services deliver actionable insights through comprehensive monitoring, detailed reporting, and intelligent alerting. We help you understand what's working, identify what's not, and prioritize improvements for maximum impact.
-              </p>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Analytics Capabilities */}
-        <section className="relative py-16">
+        {/* Services Section - Two Column Cards */}
+        <section id="services" className="relative py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -112,518 +267,136 @@ export default function AIAnalyticsPage() {
             >
               <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
                 Our Analytics
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-400"> Capabilities</span>
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400"> Services</span>
               </h2>
               <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
                 Comprehensive analytics solutions for monitoring and optimizing AI system performance
               </p>
             </motion.div>
 
-            {/* Performance Metrics Section */}
+            <div className="grid md:grid-cols-2 gap-8">
+              {analyticsServices.map((service, index) => (
+                <motion.article
+                  key={service.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="group"
+                >
+                  <div className="h-full p-4 sm:p-6 md:p-8 rounded-2xl bg-[#0d1117] border border-white/10 hover:border-blue-500/50 transition-all duration-300">
+                    {/* Header */}
+                    <div className="flex flex-col sm:flex-row items-start gap-4 mb-6">
+                      <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-r ${service.gradient} flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform`}>
+                        <service.icon className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+                      </div>
+                      <div>
+                        <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
+                          {service.title}
+                        </h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          {service.description}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Coverage */}
+                    <div className="mb-6">
+                      <h4 className="text-xs sm:text-sm font-semibold text-white mb-3 uppercase tracking-wide">What We Cover</h4>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
+                        {Object.entries(service.coverage).map(([key, value]) => (
+                          <div key={key} className="p-2 sm:p-3 rounded-lg bg-blue-500/5 border border-blue-500/10">
+                            <div className="text-xs font-semibold text-white mb-1">{key}</div>
+                            <div className="text-xs text-gray-300 leading-relaxed">{value}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Deliverables & Standards */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-4">
+                      <div className="p-3 sm:p-4 rounded-xl bg-gradient-to-b from-cyan-900/30 to-cyan-950/50 border border-cyan-500/30">
+                        <h4 className="text-xs font-semibold text-white mb-2 uppercase">Deliverables</h4>
+                        <ul className="space-y-1">
+                          {service.deliverables.map((item) => (
+                            <li key={item} className="text-xs text-gray-300 leading-relaxed">✓ {item}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="p-3 sm:p-4 rounded-xl bg-gradient-to-b from-cyan-900/30 to-cyan-950/50 border border-cyan-500/30">
+                        <h4 className="text-xs font-semibold text-white mb-2 uppercase">Standards</h4>
+                        <ul className="space-y-1">
+                          {service.standards.map((std) => (
+                            <li key={std} className="text-xs text-gray-300 leading-relaxed">✓ {std}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+
+                    {/* Use Case */}
+                    <div className="text-xs sm:text-sm">
+                      <span className="text-white font-semibold">Best for: </span>
+                      <span className="text-gray-300 leading-relaxed">{service.use}</span>
+                    </div>
+                  </div>
+                </motion.article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Why Analytics Section */}
+        <section className="relative py-24 bg-gradient-to-b from-blue-950/10 to-black">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="mb-24"
+              className="text-center mb-16"
             >
-              <div className="mb-8">
-                <div className="flex items-center justify-center gap-4 mb-6">
-                  <div className="p-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600">
-                    <TrendingUp className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-3xl font-bold text-white">Performance Metrics</h3>
-                </div>
-                <p className="text-muted-foreground text-lg mb-4">
-                  Comprehensive tracking of model performance metrics across accuracy, latency, throughput, and resource utilization. We monitor both technical metrics and business KPIs to provide complete visibility into system performance.
-                </p>
-                <p className="text-muted-foreground text-lg">
-                  Real-time dashboards and automated reporting keep you informed of model health. Historical tracking enables trend analysis and performance comparison across model versions and time periods.
-                </p>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-emerald-400" />
-                    Accuracy and Error Tracking
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Continuous monitoring of model accuracy, precision, recall, and F1 scores. Tracks error rates by category and identifies patterns in model failures.
-                  </p>
-                </div>
-                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-emerald-400" />
-                    Latency and Throughput Monitoring
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Real-time tracking of inference speed and system capacity. Identifies performance bottlenecks and ensures SLA compliance for production systems.
-                  </p>
-                </div>
-                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-emerald-400" />
-                    Resource Utilization Analysis
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Monitoring of compute, memory, and storage usage. Optimizes resource allocation and identifies opportunities for cost reduction.
-                  </p>
-                </div>
-                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-emerald-400" />
-                    Business Impact Metrics
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Tracking AI system impact on business outcomes like conversion rates, user satisfaction, and revenue. Connects technical performance to business value.
-                  </p>
-                </div>
-                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-emerald-400" />
-                    Comparative Analysis
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Side-by-side comparison of different models, versions, and configurations. Enables data-driven decisions about model selection and updates.
-                  </p>
-                </div>
-                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-emerald-400" />
-                    Custom Metric Definition
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Flexible framework for tracking domain-specific and business-specific metrics. Tailored analytics that align with your unique requirements.
-                  </p>
-                </div>
-              </div>
+              <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+                Why AI Analytics
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400"> Matter</span>
+              </h2>
             </motion.div>
 
-            {/* Quality Reports Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="mb-24"
-            >
-              <div className="mb-8">
-                <div className="flex items-center justify-center gap-4 mb-6">
-                  <div className="p-3 rounded-xl bg-gradient-to-r from-teal-600 to-cyan-600">
-                    <PieChart className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-3xl font-bold text-white">Quality Reports</h3>
-                </div>
-                <p className="text-muted-foreground text-lg mb-4">
-                  Detailed quality assessment reports providing comprehensive analysis of model outputs, data quality, and system reliability. Our reports combine automated analysis with expert human evaluation for complete quality visibility.
-                </p>
-                <p className="text-muted-foreground text-lg">
-                  Regular quality reports keep stakeholders informed and guide improvement initiatives. Includes executive summaries, technical deep-dives, and actionable recommendations.
-                </p>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-teal-400" />
-                    Output Quality Analysis
-                  </h4>
-                  <p className="text-muted-foreground">
-                    In-depth assessment of model output quality across multiple dimensions. Identifies patterns in errors, edge cases, and exceptional performance.
-                  </p>
-                </div>
-                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-teal-400" />
-                    Data Quality Assessment
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Evaluation of training and inference data quality. Identifies issues like missing values, outliers, bias, and distribution shifts affecting model performance.
-                  </p>
-                </div>
-                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-teal-400" />
-                    Fairness and Bias Reports
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Specialized reports analyzing model fairness across demographic groups. Detects and quantifies bias to ensure equitable AI systems.
-                  </p>
-                </div>
-                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-teal-400" />
-                    Incident Analysis
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Post-mortem analysis of model failures and system incidents. Identifies root causes and provides recommendations to prevent recurrence.
-                  </p>
-                </div>
-                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-teal-400" />
-                    Compliance Documentation
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Reports formatted for regulatory compliance and audit purposes. Documents model behavior, testing procedures, and quality assurance processes.
-                  </p>
-                </div>
-                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-teal-400" />
-                    Improvement Roadmaps
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Prioritized recommendations for model and system improvements. Data-driven roadmaps that maximize impact of development efforts.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-
-            {/* Trend Analysis Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="mb-24"
-            >
-              <div className="mb-8">
-                <div className="flex items-center justify-center gap-4 mb-6">
-                  <div className="p-3 rounded-xl bg-gradient-to-r from-teal-600 to-cyan-600">
-                    <PieChart className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-3xl font-bold text-white">Trend Analysis</h3>
-                </div>
-                <p className="text-muted-foreground text-lg mb-4">
-                  Detailed quality assessment reports providing comprehensive analysis of model outputs, data quality, and system reliability. Our reports combine automated analysis with expert human evaluation for complete quality visibility.
-                </p>
-                <p className="text-muted-foreground text-lg">
-                  Regular quality reports keep stakeholders informed and guide improvement initiatives. Includes executive summaries, technical deep-dives, and actionable recommendations.
-                </p>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-teal-400" />
-                    Output Quality Analysis
-                  </h4>
-                  <p className="text-muted-foreground">
-                    In-depth assessment of model output quality across multiple dimensions. Identifies patterns in errors, edge cases, and exceptional performance.
-                  </p>
-                </div>
-                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-teal-400" />
-                    Data Quality Assessment
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Evaluation of training and inference data quality. Identifies issues like missing values, outliers, bias, and distribution shifts affecting model performance.
-                  </p>
-                </div>
-                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-teal-400" />
-                    Fairness and Bias Reports
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Specialized reports analyzing model fairness across demographic groups. Detects and quantifies bias to ensure equitable AI systems.
-                  </p>
-                </div>
-                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-teal-400" />
-                    Incident Analysis
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Post-mortem analysis of model failures and system incidents. Identifies root causes and provides recommendations to prevent recurrence.
-                  </p>
-                </div>
-                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-teal-400" />
-                    Compliance Documentation
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Reports formatted for regulatory compliance and audit purposes. Documents model behavior, testing procedures, and quality assurance processes.
-                  </p>
-                </div>
-                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-teal-400" />
-                    Improvement Roadmaps
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Prioritized recommendations for model and system improvements. Data-driven roadmaps that maximize impact of development efforts.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-
-            {/* ROI Tracking Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="mb-24"
-            >
-              <div className="mb-8">
-                <div className="flex items-center justify-center gap-4 mb-6">
-                  <div className="p-3 rounded-xl bg-gradient-to-r from-teal-600 to-cyan-600">
-                    <PieChart className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-3xl font-bold text-white">ROI Tracking</h3>
-                </div>
-                <p className="text-muted-foreground text-lg mb-4">
-                  Detailed quality assessment reports providing comprehensive analysis of model outputs, data quality, and system reliability. Our reports combine automated analysis with expert human evaluation for complete quality visibility.
-                </p>
-                <p className="text-muted-foreground text-lg">
-                  Regular quality reports keep stakeholders informed and guide improvement initiatives. Includes executive summaries, technical deep-dives, and actionable recommendations.
-                </p>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-teal-400" />
-                    Output Quality Analysis
-                  </h4>
-                  <p className="text-muted-foreground">
-                    In-depth assessment of model output quality across multiple dimensions. Identifies patterns in errors, edge cases, and exceptional performance.
-                  </p>
-                </div>
-                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-teal-400" />
-                    Data Quality Assessment
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Evaluation of training and inference data quality. Identifies issues like missing values, outliers, bias, and distribution shifts affecting model performance.
-                  </p>
-                </div>
-                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-teal-400" />
-                    Fairness and Bias Reports
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Specialized reports analyzing model fairness across demographic groups. Detects and quantifies bias to ensure equitable AI systems.
-                  </p>
-                </div>
-                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-teal-400" />
-                    Incident Analysis
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Post-mortem analysis of model failures and system incidents. Identifies root causes and provides recommendations to prevent recurrence.
-                  </p>
-                </div>
-                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-teal-400" />
-                    Compliance Documentation
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Reports formatted for regulatory compliance and audit purposes. Documents model behavior, testing procedures, and quality assurance processes.
-                  </p>
-                </div>
-                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-teal-400" />
-                    Improvement Roadmaps
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Prioritized recommendations for model and system improvements. Data-driven roadmaps that maximize impact of development efforts.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-
-            {/* Model Comparison Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="mb-24"
-            >
-              <div className="mb-8">
-                <div className="flex items-center justify-center gap-4 mb-6">
-                  <div className="p-3 rounded-xl bg-gradient-to-r from-teal-600 to-cyan-600">
-                    <PieChart className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-3xl font-bold text-white">Model Comparison</h3>
-                </div>
-                <p className="text-muted-foreground text-lg mb-4">
-                  Detailed quality assessment reports providing comprehensive analysis of model outputs, data quality, and system reliability. Our reports combine automated analysis with expert human evaluation for complete quality visibility.
-                </p>
-                <p className="text-muted-foreground text-lg">
-                  Regular quality reports keep stakeholders informed and guide improvement initiatives. Includes executive summaries, technical deep-dives, and actionable recommendations.
-                </p>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-teal-400" />
-                    Output Quality Analysis
-                  </h4>
-                  <p className="text-muted-foreground">
-                    In-depth assessment of model output quality across multiple dimensions. Identifies patterns in errors, edge cases, and exceptional performance.
-                  </p>
-                </div>
-                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-teal-400" />
-                    Data Quality Assessment
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Evaluation of training and inference data quality. Identifies issues like missing values, outliers, bias, and distribution shifts affecting model performance.
-                  </p>
-                </div>
-                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-teal-400" />
-                    Fairness and Bias Reports
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Specialized reports analyzing model fairness across demographic groups. Detects and quantifies bias to ensure equitable AI systems.
-                  </p>
-                </div>
-                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-teal-400" />
-                    Incident Analysis
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Post-mortem analysis of model failures and system incidents. Identifies root causes and provides recommendations to prevent recurrence.
-                  </p>
-                </div>
-                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-teal-400" />
-                    Compliance Documentation
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Reports formatted for regulatory compliance and audit purposes. Documents model behavior, testing procedures, and quality assurance processes.
-                  </p>
-                </div>
-                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-teal-400" />
-                    Improvement Roadmaps
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Prioritized recommendations for model and system improvements. Data-driven roadmaps that maximize impact of development efforts.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Drift Detection Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="mb-24"
-            >
-              <div className="mb-8">
-                <div className="flex items-center justify-center gap-4 mb-6">
-                  <div className="p-3 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600">
-                    <AlertCircle className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-3xl font-bold text-white">Drift Detection</h3>
-                </div>
-                <p className="text-muted-foreground text-lg mb-4">
-                  Automated detection of data drift and model drift that can degrade performance over time. We monitor input distributions, output patterns, and prediction accuracy to identify when models need updating or retraining.
-                </p>
-                <p className="text-muted-foreground text-lg">
-                  Early drift detection prevents performance degradation and maintains model reliability. Automated alerts notify you of significant changes requiring attention.
-                </p>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-cyan-400" />
-                    Data Distribution Monitoring
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Statistical monitoring of input data distributions over time. Detects shifts that indicate changing user behavior or environmental conditions.
-                  </p>
-                </div>
-                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-cyan-400" />
-                    Concept Drift Detection
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Identifying when the relationship between inputs and outputs changes. Critical for maintaining accuracy when underlying patterns evolve.
-                  </p>
-                </div>
-                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-cyan-400" />
-                    Performance Degradation Alerts
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Automated alerts when model accuracy or other key metrics fall below acceptable thresholds. Enables rapid response to performance issues.
-                  </p>
-                </div>
-                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-cyan-400" />
-                    Temporal Pattern Analysis
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Analysis of seasonal and cyclical patterns in model performance. Distinguishes expected variations from problematic drift.
-                  </p>
-                </div>
-                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-cyan-400" />
-                    Retraining Recommendations
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Data-driven recommendations on when and how to retrain models. Optimizes retraining schedule and data selection for maximum improvement.
-                  </p>
-                </div>
-                <div className="p-6 rounded-xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border">
-                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-cyan-400" />
-                    Root Cause Analysis
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Investigation to identify the underlying causes of detected drift. Determines whether drift stems from data changes, system issues, or external factors.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {whyAnalytics.map((reason, index) => (
+                <motion.div
+                  key={reason.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="p-6 rounded-2xl bg-[#0d1117] border border-white/10 text-center"
+                >
+                  <reason.icon className="w-12 h-12 text-blue-400 mx-auto mb-4" />
+                  <h3 className="text-lg font-bold text-white mb-2">{reason.title}</h3>
+                  <p className="text-sm text-muted-foreground">{reason.description}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </section>
 
         {/* CTA Section */}
         <section className="relative py-24">
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-emerald-950/10 to-black" />
-
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="p-8 md:p-12 rounded-3xl bg-gradient-to-b from-secondary/50 to-secondary/20 border border-border"
+              className="p-8 md:p-12 rounded-3xl bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/20"
             >
-              <Sparkles className="w-12 h-12 text-emerald-400 mx-auto mb-6" />
+              <BarChart3 className="w-12 h-12 text-blue-400 mx-auto mb-6" />
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 Ready to Gain AI Insights?
               </h2>
-              <p className="text-muted-foreground text-lg mb-8">
+              <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto">
                 Let's discuss how our AI analytics services can provide visibility into your model performance and guide optimization efforts. Get a free consultation today.
               </p>
               <Link href="/contact">
-                <Button size="lg" className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-8 py-6 text-lg rounded-xl">
+                <Button size="lg" className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-8 py-6 text-lg rounded-xl">
                   Contact Us Today
                 </Button>
               </Link>
