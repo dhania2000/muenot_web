@@ -84,7 +84,9 @@ export function HeroSection() {
               Explore Services
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
-          </Link href="/contact">
+          </Link>
+          
+          <Link href="/contact">
           <Button
             size="lg"
             variant="outline"
@@ -93,6 +95,8 @@ export function HeroSection() {
          
             Contact Us
           </Button>
+          </Link>
+          
         </motion.div>
 
         {/* Stats */}
