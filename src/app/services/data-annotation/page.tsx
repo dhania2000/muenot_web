@@ -86,7 +86,7 @@ const services = [
       "Multi-speaker support",
     ],
     perfectFor: ["Voice assistants", "Call centers", "Podcast analysis", "Music AI"],
-    languages: "100+ languages",
+    languages: "50+ languages",
     turnaround: "5-7 business days",
   },
   {
@@ -103,7 +103,7 @@ const services = [
     ],
     perfectFor: ["Surveillance", "Sports analytics", "Autonomous driving", "Content creation"],
     languages: "All video formats",
-    turnaround: "7-10 business days",
+    turnaround: "5-7 business days",
   },
 ];
 
@@ -115,7 +115,7 @@ const stats = [
     icon: Shield,
   },
   {
-    value: "50M+",
+    value: "10M+",
     label: "Data Points",
     sublabel: "Processed monthly",
     icon: Zap,
@@ -186,7 +186,7 @@ export default function DataAnnotationPage() {
                   Get Started
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
-              </Link>
+              </Link href="#services">
               <Button size="lg" variant="outline" className="border-white/10 bg-transparent hover:bg-white/5 text-white rounded-full px-8 py-6 text-base">
                 View Samples
               </Button>
