@@ -12,6 +12,7 @@ import {
   Users,
   Monitor,
   ArrowRight,
+  Instagram,
 } from "lucide-react";
 
 const offices = [
@@ -42,6 +43,7 @@ const servicesLinks = [
 
 const socialLinks = [
   { name: "LinkedIn", icon: Linkedin, href: "https://www.linkedin.com/company/muenot/?viewAsMember=true" },
+  { name: "Instagram", icon: Instagram, href: "https://www.linkedin.com/company/muenot/?viewAsMember=true" },
 ];
 
 export function Footer() {
