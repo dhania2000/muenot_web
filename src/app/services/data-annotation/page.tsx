@@ -186,10 +186,12 @@ export default function DataAnnotationPage() {
                   Get Started
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
-              </Link href="#services">
-              <Button size="lg" variant="outline" className="border-white/10 bg-transparent hover:bg-white/5 text-white rounded-full px-8 py-6 text-base">
-                View Samples
-              </Button>
+              </Link>
+              <Link href="#services">
+                    <Button size="lg" variant="outline" className="border-purple-500/30 hover:bg-purple-500/10 px-8 py-6 text-lg rounded-xl">
+                      View Services
+                    </Button>
+              </Link>
             </div>
           </motion.div>
 
