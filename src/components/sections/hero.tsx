@@ -90,8 +90,8 @@ export function HeroSection() {
             variant="outline"
             className="border-violet-500/30 hover:bg-violet-500/10 px-8 py-6 text-lg rounded-xl group"
           >
-            <Play className="mr-2 w-5 h-5" />
-            Watch Demo
+         
+            Contact Us
           </Button>
         </motion.div>
 
