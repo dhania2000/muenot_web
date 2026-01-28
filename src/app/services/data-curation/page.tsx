@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Database, ArrowLeft, ArrowRight, Filter, Layers, Shield, Search, TrendingUp, Zap, CheckCircle, Clock, Globe, RefreshCw, } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Link from "next/link";
 import { SparklesCore } from "@/components/ui/sparkles";
 import { Navbar } from "@/components/layout/navbar";
