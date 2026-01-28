@@ -152,8 +152,8 @@ const analyticsServices = [
 const analyticsStats = [
   { label: "Metrics Tracked", value: "500+", icon: Shield },
   { label: "Accuracy Rate", value: "99.9%", icon: CheckCircle2 },
-  { label: "Clients Served", value: "200+", icon: Users },
-  { label: "Data Points/Day", value: "10M+", icon: BarChart3 }
+  { label: "Clients Served", value: "20+", icon: Users },
+  { label: "Data Points/Day", value: "5M+", icon: BarChart3 }
 ];
 
 const whyAnalytics = [
