@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { 
@@ -353,7 +354,7 @@ export default function AboutPage() {
                   Get In Touch
                 </a>
                 <a
-                  href="/contact"
+                  href="/services#services-overview"
                   className="px-8 py-4 border border-violet-500/30 hover:bg-violet-500/10 text-white font-semibold rounded-xl transition-all duration-300"
                 >
                   Explore Services
